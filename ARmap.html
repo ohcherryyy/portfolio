@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AR重拾城市黑白影像 | 吴晓妍</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5ef466c3f629d80bfc0af1ac.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f057464f629d81184e1daa7.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f05df98f629d81184e1daba.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f067d54f629d81184e1dac7.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06df37f629d81184e1dae5.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5ef9a539f629d813d03f1cdd.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efada2cf629d804887dc122.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb42d3f629d804887dc161.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56a2f629d804887dc16f.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56c7f629d804887dc170.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f071f629d80e8cb1cafe.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f0a7f629d80e8cb1caff.css' rel='stylesheet' type='text/css' />
+    <style>
+        .banner{
+            display: flex;
+            height: 60vh;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
+        }
+        .bannerimg{
+            text-align: center;
+            align-content: center;
+            margin: auto;
+            
+        }
+        .content{
+            display: block;
+            text-align: center;
+        }
+        .introduction{
+            font-size: 110%;
+            color: #8b8b8b;
+            letter-spacing:2px;
+            margin-top: 70px;
+            text-align: left;
+        }
+        .title{
+            font-size: 200%;
+            color: #8b8b8b;
+            margin-top: 120px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .title:after{
+            display: block;
+            height: 2px;
+            background-color: #bebebe;
+            content: " ";
+            width: 100px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .category{
+            letter-spacing: 2px;
+            
+            color:#888888;
+            font-size: 150%;
+        }
+        .gradient{
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
+            margin: auto;
+            /* text-align: center; */
+        }
+        .boxes{
+            max-width: 1140px;
+            margin: auto;
+        }
+        .boximg{
+            transition: all 0.5s;
+            -webkit-transition: all .5s;/* Safari 和 Chrome */
+            -moz-transition: all 0.5s;/* Firefox*/
+            -ms-transition:all 0.5s; /* Internet Explorer */
+            -o-transition: all 0.5s;/* Opera */
+        }
+        .boximg:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+        }
+        .boximg p{
+            position:relative;
+            text-align: center;
+            top: 50px;
+            opacity: 0;
+            transition: 0.5s;
+            font-size: 100%;
+            color: #acacac;
+        }
+        .boximg:hover p{
+            transform: translateY(-35px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>  
+    <header class="banner">
+        <div class="bannerimg">
+            <!-- <div class="row"> -->
+                <img src="Resources/boximg/ARBANNER1.png" class="img-responsive" style="max-width: 400px; margin-top: 30px;">
+            <!-- </div>                      -->
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="introduction">
+                <p>
+                    <strong style="color:#EAB12D ;">AR重拾城市黑白影像</strong>是一个以上海<strong style="color:#EAB12D ;">历史文化保护建筑</strong>为主题的旅游类移动应用。用户可以自行选择感兴趣的景区地图开始行程，通过AR技术识别牌匾，获得实景模型还原、VR视频的景点讲解。结束行程后，生成一张路线图，保存用户自己拍下的照片，以便随时随地分享到各个社交平台。
+                    <br><br>
+                    该项目原为小组作品，我作为组长负责了前期的调研、功能模块的设计以及AR部分开发，点击这里查看当时的作品。本次我根据之前的调研结果，重新设计了交互流程、界面整体风格和信息布局。
+                </p>
+            </div>
+            <h2 class="title css21d277f1eb22046">用户调研</h2>
+            <br><br>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="Resources/AR/researchresult1.png" class="img-responsive" style="max-width: 350px;">
+                </div>
+                <div class="col-md-4">
+                    <img src="Resources/AR/researchresult2.png" class="img-responsive" style="max-width: 350px;">
+                </div>
+                <div class="col-md-4">
+                    <img src="Resources/AR/researchresult3.png" class="img-responsive" style="max-width: 350px;">
+                </div>
+            </div>
+            <!-- <br><br>
+            <h4 style="font-size: 120%;">提升文化主题游的旅行体验，从而引起人们对于城市历史保护建筑的关注</h4> -->
+            <div class="introduction">
+                <p>
+                    <strong style="color:#EAB12D ;">游客</strong>会遇到这些问题
+                </p>
+                <ul>
+                    <li>不清楚城市中历史保护建筑的位置</li>
+                    <li>部分历史保护建筑有出入限制，无法入内参观</li>
+                    <li>很难获取历史保护建筑的相关信息/多为文字信息较为枯燥</li>
+                </ul>
+                <br>
+                <p>
+                    可能的<strong style="color:#EAB12D ;">解决方法</strong>
+                </p>
+                <ul>
+                    <li>引入地图和导航</li>
+                    <li>丰富景点讲解形式，加入查看模型、视频等方式解决出入限制问题</li>
+                    <li>生成路线打卡图满足社交分享的欲望</li>
+                </ul>
+            </div>
+            <h2 class="title css21d41ab3d522046">设计重点</h2>
+            <br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-4" style="max-width: 400px;">
+                    <svg t="1594260192938" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="859" width="200" height="200"><path d="M377.6 625.6m-293.333333 0a293.333333 293.333333 0 1 0 586.666666 0 293.333333 293.333333 0 1 0-586.666666 0Z" fill="#EDF6FF" p-id="860"></path><path d="M602.133333 628.266667l-8-10.133334c-6.933333-8.533333-171.733333-208.533333-171.733333-305.066666 0-99.2 80.533333-179.733333 179.733333-179.733334s179.733333 80.533333 179.733334 179.733334c0 96-164.8 296.533333-171.733334 305.066666l-8 10.133334z m0-473.6c-87.466667 0-158.4 70.933333-158.4 158.4 0 76.8 124.8 238.933333 158.4 281.066666 33.6-42.133333 158.4-204.266667 158.4-281.066666 0-87.466667-70.933333-158.4-158.4-158.4z" p-id="861"></path><path d="M602.133333 302.4m-59.2 0a59.2 59.2 0 1 0 118.4 0 59.2 59.2 0 1 0-118.4 0Z" fill="#2394FB" p-id="862"></path><path d="M776 521.6h-3.2c-6.4 0-11.733333 5.333333-11.733333 11.733333 0 3.733333 1.6 6.933333 4.8 9.066667 34.133333 16 52.8 36.266667 52.8 56.533333 0 42.133333-86.4 87.466667-214.933334 87.466667-128.533333 0-214.933333-45.333333-214.933333-87.466667 0-19.733333 18.133333-39.466667 50.666667-55.466666 3.733333-2.133333 6.4-5.866667 6.4-10.133334 0-6.4-5.333333-11.733333-11.733334-11.733333-1.6 0-3.733333 0.533333-4.8 1.066667-41.066667 20.266667-64 46.933333-64 76.266666 0 61.866667 104.533333 110.4 237.866667 110.4s237.866667-48.533333 237.866667-110.4c0.533333-29.333333-22.933333-57.066667-65.066667-77.333333z" p-id="863"></path></svg>
+                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:2px;">地图和导航</p><br>
+                </div>
+                <div class="col-md-4">
+                    <svg t="1594260247351" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1147" width="200" height="200"><path d="M377.6 625.6m-293.333333 0a293.333333 293.333333 0 1 0 586.666666 0 293.333333 293.333333 0 1 0-586.666666 0Z" fill="#EDF6FF" p-id="1148"></path><path d="M742.4 154.133333H452.266667c-26.666667 0-48.533333 20.8-48.533334 46.4v515.2c0 25.6 21.866667 46.4 48.533334 46.4h290.133333c26.666667 0 48.533333-20.8 48.533333-46.4V200.533333c0-25.6-21.866667-46.4-48.533333-46.4z m28.8 561.6c0 14.933333-12.8 27.2-28.8 27.2H452.266667c-16 0-28.8-12.266667-28.8-27.2V200.533333c0-14.933333 12.8-27.2 28.8-27.2h64.533333l27.733333 42.133334h110.933334l23.466666-42.133334h63.466667c16 0 28.8 12.266667 28.8 27.2v515.2z" p-id="1149"></path><path d="M501.333333 661.333333h192v42.666667H501.333333z" fill="#2394FB" p-id="1150"></path></svg>
+                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:2px;">AR扫描牌匾，获取信息</p>
+                </div>
+                <div class="col-md-4">
+                    <svg t="1594260209753" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1004" width="200" height="200"><path d="M377.6 625.6m-293.333333 0a293.333333 293.333333 0 1 0 586.666666 0 293.333333 293.333333 0 1 0-586.666666 0Z" fill="#FFEFDB" p-id="1005"></path><path d="M501.333333 193.066667h21.333334v118.4h-21.333334zM501.333333 379.2h21.333334v118.4h-21.333334zM501.333333 552h21.333334v118.4h-21.333334zM731.733333 332.266667h16v146.133333h-16zM732.266667 533.333333h16v137.066667h-16z" fill="#FF9E1F" p-id="1006"></path><path d="M618.666667 322.133333h213.333333v19.733334h-213.333333zM352 431.466667h149.333333v16H352zM626.666667 593.6h113.066666v16h-113.066666z" fill="#FF9E1F" p-id="1007"></path><path d="M845.866667 681.066667H334.4V169.6h510.933333v511.466667z m-490.133334-21.333334h468.266667V190.933333H355.733333v468.8z" fill="#020202" p-id="1008"></path></svg>
+                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:2px;">生成路线打卡图，分享到社交平台</p>
+                </div>
+                <div class="col-md-6">
+                    <svg t="1594260266390" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1291" width="200" height="200"><path d="M377.6 625.6m-293.333333 0a293.333333 293.333333 0 1 0 586.666666 0 293.333333 293.333333 0 1 0-586.666666 0Z" fill="#DFF5E3" p-id="1292"></path><path d="M764.266667 459.2V269.333333h-2.666667l0.533333-0.533333L597.333333 158.4 432.533333 268.8l0.533334 0.533333h-2.666667v189.866667h0.533333l-1.066666 2.133333 167.466666 106.133334 167.466667-107.2-0.533333-1.066667z m-26.666667-6.933333L610.666667 533.333333V379.2l126.933333-92.8v165.866667zM597.333333 184l127.466667 85.333333L597.333333 362.666667 469.866667 269.333333l127.466666-85.333333z m-13.333333 195.2V533.333333L457.066667 452.8V286.4l126.933333 92.8zM849.6 448c-2.133333-2.666667-5.333333-4.266667-8.533333-4.266667-5.866667 0-10.666667 4.8-10.666667 10.666667 0 3.2 1.6 5.866667 3.733333 8 9.6 13.333333 14.933333 26.666667 14.933334 40.533333 0 51.733333-69.866667 97.066667-165.333334 114.666667 0 0-10.666667 3.733333-10.666666 11.733333s10.666667 10.133333 10.666666 10.133334c109.866667-18.666667 186.666667-72 186.666667-136.533334-1.066667-19.2-7.466667-37.333333-20.8-54.933333z" p-id="1293"></path><path d="M572.266667 624.533333C447.466667 618.133333 346.666667 564.8 346.666667 502.933333c0-13.866667 4.8-27.2 14.4-40 2.133333-2.133333 3.733333-4.8 3.733333-8 0-5.866667-4.8-10.666667-10.666667-10.666666-3.2 0-6.4 1.6-8.533333 4.266666-13.333333 17.066667-20.266667 35.733333-20.266667 54.933334 0 75.733333 106.666667 136 246.933334 142.933333v-21.866667z" fill="#3CC451" p-id="1294"></path><path d="M571.733333 582.933333l51.2 51.2-51.2 50.666667z" fill="#3CC451" p-id="1295"></path></svg>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">实景模型还原</p>
+                </div>
+                <div class="col-md-6">
+                    <svg t="1594260441162" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1728" width="200" height="200"><path d="M377.6 625.6m-293.333333 0a293.333333 293.333333 0 1 0 586.666666 0 293.333333 293.333333 0 1 0-586.666666 0Z" fill="#FADEE3" p-id="1729"></path><path d="M571.733333 709.333333c-113.066667 0-211.733333-88-240-213.866666l20.8-4.8c26.133333 116.266667 116.266667 197.333333 219.2 197.333333 104 0 194.133333-82.133333 219.733334-199.466667l20.8 4.266667c-27.733333 127.466667-126.4 216.533333-240.533334 216.533333zM393.066667 260.8l-17.6-11.733333c47.466667-70.933333 118.933333-111.466667 196.266666-111.466667 76.266667 0 147.2 39.466667 194.666667 108.8l-17.6 12.266667c-43.2-63.466667-107.733333-99.733333-177.066667-99.733334-70.4 0-135.466667 37.333333-178.666666 101.866667z" p-id="1730"></path><path d="M792 501.866667H361.6c-30.933333 0-56-24.533333-56-54.933334V301.333333c0-30.4 25.066667-54.933333 56-54.933333h430.4c30.933333 0 56 24.533333 56 54.933333v145.6c0 30.4-25.066667 54.933333-56 54.933334zM361.6 267.733333c-19.2 0-34.666667 14.933333-34.666667 33.6v145.6c0 18.133333 15.466667 33.6 34.666667 33.6h430.4c19.2 0 34.666667-14.933333 34.666667-33.6V301.333333c0-18.133333-15.466667-33.6-34.666667-33.6H361.6z" p-id="1731"></path><path d="M387.2 300.8h79.466667v23.466667H387.2zM486.933333 300.8h52.266667v23.466667h-52.266667zM637.333333 544c0 26.666667-22.4 48.533333-50.133333 48.533333s-50.133333-21.866667-50.133333-48.533333" fill="#E13455" p-id="1732"></path></svg>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">VR视频</p>
+                </div>
+            </div>
+            <h2 class="title css21d682d9ea22046">交互流程</h2>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="Resources/AR/workflow@2x .png" class="col-md-12">
+                </div>
+            </div>
+            <h2 class="title css21d80137d822046">原型设计</h2>
+            <br><br>
+            <div class="row" style="text-align: center; line-height: 100%;">
+                <div class="col-md-6">
+                    <img src="Resources/AR/prototype/mapselection.gif" class="col-md-12 img-responsive" style="max-width:250px;">
+                </div>
+                <div class="col-md-6">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">选择想要参观的景区</p>
+                </div> 
+            </div>
+            <br><br><br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">自定义选择景点，<br>并获取导航信息<br>随时点击右上角按钮拍摄</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/AR/prototype/spot.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 <div class="col-md-6">
+                    <img src="Resources/AR/prototype/AR.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>
+                <div class="col-md-6">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">手机扫描牌匾后，<br>获得该建筑基本简介<br>以及景点讲解的入口</p>
+                </div>              
+            </div>
+            <br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 <div class="col-md-3">
+                    <img src="Resources/AR/prototype/model.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>
+                <div class="col-md-3">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">除了查看建筑模型外观，<br>还能查看模型细节相关文字信息</p>
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/prototype/vr.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>          
+                <div class="col-md-3">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">右侧按钮栏可以截图、播放暂停视频、<br>自动跳转到感兴趣的片段</p>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 <div class="col-md-6">
+                    <img src="Resources/AR/prototype/share.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>
+                <div class="col-md-6">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">结束行程后生成路线图，<br>可与行程中拍摄的照片一起分享到各社交平台</p>
+                </div>              
+            </div>
+            <br><br><br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">随时进入图鉴查看曾经的行程路线图和照片，<br>再次分享</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/AR/prototype/gallery.gif" class="col-md-12 img-responsive" style="max-width: 250px;">
+                </div>
+            </div>
+            <h2 class="title css21d84482d422046">最终界面展示</h2>
+            <br><br>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/首页.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/map.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/spot.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-3">
+                            
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/AR.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/实景.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/vr.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/分享.JPG" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-3">
+                    <img src="Resources/AR/interface/share.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br><br><br><br><br>
+        </div>
+        
+    </div>
+    <div class="container-fluid">
+        <div class="other">
+            <h2 class="title css21d845575b22046">其他作品</h2>
+            <div class="gradient">
+                <div class="boxes">
+                    <div class="row" style="max-width: 1140px; margin: auto;">
+                        <div class="col-md-4"><p class="category" style="font-family:'SiYuan-ExtraLig21a456b18e22046';">交互设计</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaa650e722046">私家厨房</p>
+                            <img src="Resources/boximg/SHAREBOX.png" class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gradient">
+                <div class="boxes">
+                    <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
+                        <div class="col-md-4"><p class="category css21a90d84fc22046">数据可视化</p></div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaf3b47822046">网球四大满贯赛事数据可视化</p>
+                            <a href="http://visualmap.cheryloh.com:83" target="_blank">
+                            <img src="Resources/boximg/sportsbox.png" class="col-md-12"> </a>
+                        </div>
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaf443f622046">新冠肺炎疫情趋势图</p>
+                            <a href="http://visualmap.cheryloh.com:48" target="_blank">
+                                <img src="Resources/boximg/epidemicbox.png" class="col-md-12">
+                            </a> 
+                        </div>                                 
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+        <footer style="height: 0.5vh; border-top: 1px solid #acacac;">
+            <div class="row" style="padding: 10px;">
+                <div class="col-md-4">
+                    <p style="font-size: 90%; color: #acacac;">设计&制作 by 吴晓妍 © 2020</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+        
+</body>
