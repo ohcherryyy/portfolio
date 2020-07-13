@@ -67,6 +67,7 @@ function treemap(){
         },
         series: [{
             type: 'treemap',
+            roam:false,
             breadcrumb:{
                 show:false,
             },
