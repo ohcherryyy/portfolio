@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script src="jquery-1.11.3.min.js"></script>
+    <title>大学选课系统 | 吴晓妍</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5ef466c3f629d80bfc0af1ac.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f057464f629d81184e1daa7.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f05df98f629d81184e1daba.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f067d54f629d81184e1dac7.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06df37f629d81184e1dae5.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5ef9a539f629d813d03f1cdd.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efada2cf629d804887dc122.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb42d3f629d804887dc161.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56a2f629d804887dc16f.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56c7f629d804887dc170.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f071f629d80e8cb1cafe.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f0a7f629d80e8cb1caff.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e7e9f629d810203f99c5.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e818f629d810203f99c6.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e842f629d810203f99c7.css' rel='stylesheet' type='text/css' />
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f17f7d4f629d80ac43104a9.css' rel='stylesheet' type='text/css' />
+    <style>
+        .banner{
+            display: flex;
+            height: 60vh;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
+        }
+        .bannerimg{
+            text-align: center;
+            align-content: center;
+            margin: auto;
+            
+        }
+        .content{
+            display: block;
+            text-align: center;
+        }
+        .introduction{
+            font-size: 110%;
+            color: #8b8b8b;
+            letter-spacing:2px;
+            margin-top: 70px;
+            text-align: left;
+        }
+        .title{
+            font-size: 200%;
+            color: #8b8b8b;
+            margin-top: 120px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .title:after{
+            display: block;
+            height: 2px;
+            background-color: #bebebe;
+            content: " ";
+            width: 100px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .category{
+            letter-spacing: 2px;
+            
+            color:#888888;
+            font-size: 150%;
+        }
+        .gradient{
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
+            margin: auto;
+            /* text-align: center; */
+        }
+        .boxes{
+            max-width: 1140px;
+            margin: auto;
+        }
+        .boximg{
+            transition: all 0.5s;
+            -webkit-transition: all .5s;/* Safari 和 Chrome */
+            -moz-transition: all 0.5s;/* Firefox*/
+            -ms-transition:all 0.5s; /* Internet Explorer */
+            -o-transition: all 0.5s;/* Opera */
+        }
+        .boximg:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+        }
+        .boximg p{
+            position:relative;
+            text-align: center;
+            top: 50px;
+            opacity: 0;
+            transition: 0.5s;
+            font-size: 100%;
+            color: #acacac;
+        }
+        .boximg:hover p{
+            transform: translateY(-35px);
+            opacity: 1;
+        }
+        .circle{
+            width: 5px;
+            height: 5px;
+            border-radius: 5px;
+            background-color: #8b8b8b;
+            display: block;
+            float: none;
+            margin: 6px;
+        }
+    </style>
+</head>
+<body>  
+    <header class="banner">
+        <div class="bannerimg">
+            <!-- <div class="row"> -->
+                <img src="Resources/boximg/coursebanner.png" class="img-responsive" style="max-width: 750px; margin-top: 30px;">
+            <!-- </div>                      -->
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="introduction">
+                <p>
+                    <strong style="color:#96BAE2 ;">大学选课系统</strong>是大学生活中必不可少的工具，但在使用过程中常常会遇到操作不便利、部分功能流程设计不合理之处，并且整体的界面风格沉闷无趣。
+                    <br><br>
+                    本作品便总结了大学选课系统中存在的问题，尝试解决这些问题，并重新设计系统的部分交互流程、界面布局和整体风格，使得系统的操作更方便，界面更美观。
+                    
+                </p>
+            </div>
+            <h2 class="title css221ac95ed82218b">面临的问题</h2>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Resources/course/old/selection.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/course/搜索课程 – 待选课程.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <p style="font-size: 110%;color: #22304c;letter-spacing:2px; text-align: center;">现存的问题</p>
+                    <ul style="font-size: 110%;color: #8b8b8b;letter-spacing:2px; text-align: left;">
+                        <li>列表形式展示的课程信息<span style="color: #96bae2;">易读性差</span></li>
+                        <li>选课退课流程<span style="color: #96bae2;">不合理</span></li>
+                        <li>没有选课计划的提示，需<span style="color: #96bae2;">借助纸质选课书</span>进行选课</li>
+                        <li>界面风格比较沉闷</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p style="font-size: 110%;color: #22304c;letter-spacing:2px; text-align: center;">解决方案</p>
+                    <ul style="font-size: 110%;color: #8b8b8b;letter-spacing:2px; text-align: left;">
+                        <li>块状显示课程信息，突出重点</li>
+                        <li>根据时间选择课程后，批量确认选课</li>
+                        <li>系统中可查看选课计划</li>
+                        <li>界面风格有活力</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 class="title css21d682d9ea22046">交互流程</h2>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="Resources/course/liucheng.jpg" class="col-md-12" style="max-width: 800px;">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="Resources/course/workflow.png" class="col-md-12" style="max-width: 800px;">
+                </div>
+            </div>
+            <h2 class="title css21d80137d822046">原型设计</h2>
+            <br><br>
+            <div class="row" style="text-align: center; line-height: 100%;">
+                <div class="col-md-12">
+                    <img src="Resources/course/prototype/登录.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+               
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">首页查看选课相关公告信息，并输入学号密码登录</p>
+                </div> 
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-12">
+                    <img src="Resources/course/prototype/首页.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">进入系统后，查看已安排好的必修课程<br>查看选课通知及选课计划</p>    
+                </div>
+            </div> 
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 <div class="col-md-12">
+                    <img src="Resources/course/prototype/搜索课程.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">点击选课计划中的相关课程直接搜索该课程</p>
+                </div>              
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-12">
+                    <img src="Resources/course/prototype/添加课程.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">添加和删除课程<br>右侧选课计划中该课程状态变化</p>
+            
+                    
+                </div>
+            </div>        
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-12">              
+                    <img src="Resources/course/prototype/待选课程.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">当有课程时间冲突时<br>冲突课程会放入待选课程列表中，可以随时加入课程表</p>
+                </div>
+                
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 
+                <div class="col-md-12">
+                    <img src="Resources/course/prototype/确认选课.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">安排完课程表后，确认选课</p>
+                
+                    
+                </div>           
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 <div class="col-md-12">              
+                    <img src="Resources/course/prototype/查看课程排名.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">查看课程排名，排名超出课程人数会以红色重点显示</p>
+                </div>
+               
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="row" style="text-align: center;">
+                 
+                <div class="col-md-12">
+                    <img src="Resources/course/prototype/退课.gif" class="col-md-12 img-responsive" style="max-width: 900px;">
+                    <br><br><br>
+                    <p style="font-size: 120%;color: #8b8b8b; letter-spacing:2px;">排名超出的课程可直接选择退课<br>退课后该课程可继续编辑</p>
+               
+                    
+                </div>       
+            </div>
+            <h2 class="title css21d84482d422046">最终界面展示</h2> 
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/登录-info.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/登录-学号.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/系统首页-邮件.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/系统首页-邮件 – 课程清单 – 2.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/搜索课程 – 添加课程.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/搜索课程 – 待选课程.png" class="col-md-12 img-responsive">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/选课 - 确认选课.png" class="col-md-12 img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <img src="Resources/course/interface/选课 - 选课排名.png" class="col-md-12 img-responsive">
+                </div>
+
+            </div>
+            <br><br><br><br><br><br>
+        </div>
+        
+    </div>
+    <div class="container-fluid">
+        <div class="other">
+            <h2 class="title css21d845575b22046">其他作品</h2>
+            <div class="gradient">
+                <div class="boxes">
+                    <div class="row" style="max-width: 1140px; margin: auto;">
+                        <div class="col-md-4"><p class="category" style="font-family:'SiYuan-ExtraLig21a456b18e22046';">交互设计</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 boximg">
+                            <p style="font-family:'SiYuan-ExtraLig21a909452a22046';">AR重拾城市黑白影像</p>
+                            <a href="ARmap.html"><img src="Resources/boximg/ARBOX.png" class="col-md-12"></a>
+                        </div>
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaa650e722046">私家厨房</p>
+                            <a href="shared.html"><img src="Resources/boximg/SHAREBOX.png" class="col-md-12"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gradient">
+                <div class="boxes">
+                    <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
+                        <div class="col-md-4"><p class="category css21a90d84fc22046">数据可视化<span style="font-size: 60%;color:#acacac;">推荐在电脑上查看</span></p></div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaf3b47822046">网球四大满贯赛事数据可视化</p>
+                            <a href="http://visualmap.cheryloh.com:83" target="_blank">
+                            <img src="Resources/boximg/sportsbox.png" class="col-md-12"> </a>
+                        </div>
+                        <div class="col-md-4 boximg">
+                            <p class="css21aaf443f622046">新冠肺炎疫情趋势图</p>
+                            <a href="http://visualmap.cheryloh.com:48" target="_blank">
+                                <img src="Resources/boximg/epidemicbox.png" class="col-md-12">
+                            </a> 
+                        </div>                                 
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+        <footer style="height: 0.5vh; border-top: 1px solid #acacac;">
+            <div class="row" style="padding: 10px;">
+                <div class="col-md-4">
+                    <p style="font-size: 90%; color: #acacac;">设计&制作 by 吴晓妍 © 2020</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
