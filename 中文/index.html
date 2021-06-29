@@ -47,8 +47,8 @@
         .bannertext{
             letter-spacing: 2px;
             color: #888888;
-            font-size: 300%;
-            margin-bottom: 20px;
+            font-size: 400%;
+            margin-bottom: 30px;
         }
         .info{
             color:#8b8b8b;
@@ -175,9 +175,9 @@
             display: flex;
             padding: 1px;
             text-align: center;
+            align-items: center;
         }
         .myinfo{
-            
             width: 350px;
             margin: auto;
         }
@@ -216,6 +216,17 @@
             /* color: #4b4b4b;
             transform: translateY(-20px); */
         }
+        .imgrounded{
+            width: 160px;
+            height: 160px;
+            margin-left: 0;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-radius: 100px;
+            background: url("../Resources/selfie.JPG");
+            background-repeat: no-repeat;
+            background-size: auto 160px
+        }
     </style>
 </head>
 <body>
@@ -242,13 +253,13 @@
                 </div>
                 
                 <div class="row">
-                    <div class="info">
+                    <!-- <div class="info">
                         <p>Design for simplicity. <br />Design for boundless communications. <br />Design for public good.
-                    </div>    
+                    </div>     -->
                 </div>  
                 <div class="row">
                     <div class="shortinfo">
-                        <p>即将攻读用户体验设计专业@美国密西根大学安娜堡分校<br />曾在<strong>携程、蔚来(NIO)</strong>进行产品经理实习</p>
+                        <p>即将攻读用户体验设计专业@美国密西根大学安娜堡分校<br />曾在<strong>携程、蔚来(NIO)、平安科技</strong>进行产品经理实习</p>
                     </div>
                 </div>
                 <div class="row">
@@ -321,8 +332,10 @@
         </div>
         <div class="aboutme" id="me">
             <div class="myinfo" style="max-width: 450px;">
-                <img src="../Resources/selfie.JPG" class="rounded-circle" style="max-width: 160px; margin-bottom: 20px;">
-                     
+                <div class="col-md-12">
+                    <div class="imgrounded"></div> 
+                </div>
+                    
                     <div class="col-md-12" style="color:#8b8b8b; font-size: 180%; font-family:'YouYuan218fdab45622046';"> 
                         <p>吴晓妍</p>
                     </div> 
