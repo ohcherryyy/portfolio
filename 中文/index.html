@@ -30,15 +30,24 @@
     <title>吴晓妍</title>
 
     <style>
+      .gridlayout{
+        display: grid;
+        grid-template-columns: auto 1140px auto;
+        grid-template-rows: auto 100vh auto 92vh;
+      }
       .pos {
         height: 100vh;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
         display: flex;
-        max-width: 1140px;
+        flex-direction:row;
         justify-content: center;
         align-items: center;
       }
       .topbanner {
-        text-align: left;
+        text-align: center;
 
         margin: auto;
         /* margin-left: 200px; */
@@ -60,21 +69,22 @@
       }
       .info {
         color: #8b8b8b;
-        font-size: 140%;
+        font-size: 160%;
         line-height: 1.5;
         letter-spacing: 2px;
         margin-bottom: 10px;
       }
       .shortinfo {
         color: #acacac;
-        font-size: 110%;
+        font-size: 130%;
         line-height: 1.5;
         letter-spacing: 1.5px;
         margin-bottom: 20px;
       }
       .button {
         display: flex;
-        justify-content: left;
+        justify-content: center;
+        align-items: center;
       }
       .btnstyle {
         border: 2px solid #888888;
@@ -97,6 +107,10 @@
         color: #4b4b4b;
       }
       .content {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
         /* height:300vh; */
         display: block;
         padding: 1px;
@@ -182,7 +196,11 @@
         opacity: 1;
       }
       .aboutme {
-        height: 100vh;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        height: 92vh;
         display: flex;
         padding: 1px;
         text-align: center;
@@ -201,16 +219,18 @@
         text-decoration: none;
       }
       .navbar {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
         position: fixed;
         /* border-bottom: #acacac solid 1px; */
         height: 5vh;
         width: 100%;
         align-content: center;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
         display: flex;
-        max-width: 1140px;
-        margin-top: 20px;
+        padding: 50px;
       }
       .switchlan {
         font-size: 100%;
@@ -239,10 +259,19 @@
         background-repeat: no-repeat;
         background-size: auto 160px;
       }
+      .footer{
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh; 
+        border-top: 1px solid #acacac;
+      }
     </style>
   </head>
   <body>
     <div class="container-fluid">
+      <div class="gridlayout">
       <div class="navbar">
         <div class="switchlan">
           <!-- <div class="row">
@@ -265,44 +294,36 @@
       </div>
       <header class="pos">
         <div class="topbanner">
-          <div class="row">
+         
             <h1 class="bannertext">
               <a href="#me" style="text-decoration: none; color: #888888"
                 >吴晓妍</a
               >
             </h1>
-          </div>
-
-          <div class="row">
-            <!-- <div class="info">
-                        <p>Design for simplicity. <br />Design for boundless communications. <br />Design for public good.
-                    </div>     -->
-          </div>
-          <div class="row">
             <div class="shortinfo">
               <p>
                 即将攻读用户体验设计专业@美国密西根大学安娜堡分校<br />曾在<strong>携程、蔚来(NIO)、平安科技</strong>进行产品经理实习
               </p>
             </div>
-          </div>
-          <div class="row">
-            <div style="margin-right: 50px">
-              <a href="#portfolio"><button class="btnstyle">作 品</button></a>
+            <div class="button">
+              <div style="margin-right: 50px">
+                <a href="#portfolio"><button class="btnstyle">作 品</button></a>
+              </div>
+              <!-- </div>
+                  <div class="row"> -->
+              <div>
+                <a href="../Resources/吴晓妍简历.pdf" target="_blank"
+                  ><button class="btnstyle">简 历</button></a
+                >
+              </div>
             </div>
-            <!-- </div>
-                <div class="row"> -->
-            <div>
-              <a href="../Resources/吴晓妍简历.pdf" target="_blank"
-                ><button class="btnstyle">简 历</button></a
-              >
-            </div>
-          </div>
+            
         </div>
         <div class="topdefault"></div>
       </header>
       <div class="content" id="portfolio">
         <h1 class="contenttitle">作品</h1>
-        <div class="gradient">
+        <div >
           <div class="boxes">
             <div class="row" style="max-width: 1140px; margin: auto">
               <div class="col-md-4"><p class="category">产品设计</p></div>
@@ -324,14 +345,15 @@
                     class="col-md-12"
                 /></a>
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4 boximg">
                 <p>AR重拾城市黑白影像</p>
                 <a href="/中文/ARmap.html"
                   ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
                 /></a>
               </div>
+            </div>
+            <div class="row">
+              
               <div class="col-md-4 boximg">
                 <p class="css221a82df5f2218b">大学选课系统</p>
                 <a href="/中文/course.html"
@@ -343,11 +365,11 @@
             </div>
           </div>
         </div>
-        <div class="gradient">
+        <div >
           <div class="boxes">
             <div
               class="row"
-              style="max-width: 1140px; margin: auto; margin-top: 20px"
+              style="max-width: 1140px; margin: auto; margin-top: 30px"
             >
               <div class="col-md-4">
                 <p class="category">
@@ -380,11 +402,11 @@
             </div>
           </div>
         </div>
-        <div class="gradient">
+        <div>
           <div class="boxes">
             <div
               class="row"
-              style="max-width: 1140px; margin: auto; margin-top: 20px"
+              style="max-width: 1140px; margin: auto; margin-top: 30px"
             >
               <div class="col-md-4"><p class="category">调研报告</p></div>
             </div>
@@ -472,15 +494,13 @@
             </div> -->
       </div>
 
-      <div style="height: 0.5vh; border-top: 1px solid #acacac">
-        <div class="row" style="padding: 10px">
-          <div class="col-md-4">
-            <p style="font-size: 90%; color: #acacac">
-              设计&制作 by 吴晓妍 © 2021
-            </p>
-          </div>
-        </div>
-      </div>
+      
+    </div>
+    <footer class="footer">
+      <p style="font-size: 90%; color: #acacac">
+        设计&制作 by 吴晓妍 © 2021
+      </p>
+</footer>
     </div>
   </body>
   <script>
