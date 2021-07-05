@@ -28,87 +28,13 @@
       integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
       crossorigin="anonymous"
     ></script>
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5ef466c3f629d80bfc0af1ac.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f057464f629d81184e1daa7.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f05df98f629d81184e1daba.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f067d54f629d81184e1dac7.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06df37f629d81184e1dae5.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5ef9a539f629d813d03f1cdd.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efada2cf629d804887dc122.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb42d3f629d804887dc161.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56a2f629d804887dc16f.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46870/5efb56c7f629d804887dc170.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f071f629d80e8cb1cafe.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139334/46614/5f06f0a7f629d80e8cb1caff.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e7e9f629d810203f99c5.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e818f629d810203f99c6.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f09e842f629d810203f99c7.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="http://cdn.repository.webfont.com/webfonts/nomal/139659/46614/5f17f7d4f629d80ac43104a9.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+   
     <style>
+      .gridlayout{
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
+      }
       .banner {
         display: flex;
         height: 60vh;
@@ -135,11 +61,15 @@
         text-align: left;
       }
       .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
         display: block;
         position: fixed;
-        width: 150px;
-        left: 40px;
-        padding: 10px;
+        bottom:5%;
+        left: 3%;
+      }
+      .infobox ul{
+        display: block;
       }
       .nav-pills a {
         font-size: 100%;
@@ -254,6 +184,14 @@
       li.active a:hover {
         color: #4b4b4b;
       }
+      .footer{
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh; 
+        border-top: 1px solid #acacac;
+      }
     </style>
   </head>
   <body
@@ -273,8 +211,8 @@
         <!-- </div>                      -->
       </div>
     </header>
+    <div class="gridlayout">
     <nav class="infobox">
-      <div class="row">
         <div id="prelist" style="visibility: hidden" role="navigation">
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#problem">面临的问题</a></li>
@@ -292,9 +230,8 @@
               id="return"
           /></a>
         </div>
-      </div>
     </nav>
-    <div class="container" style="max-width: 1000px">
+    <div class="container" style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2;">
       <div class="content">
         <div class="introduction">
           <p>
@@ -627,10 +564,10 @@
         <br /><br /><br /><br /><br /><br />
       </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3;">
       <div class="other">
         <h2 class="title css21d845575b22046" id="other">其他作品</h2>
-        <div class="gradient">
+        <div>
           <div class="boxes">
             <div class="row" style="max-width: 1140px; margin: auto">
               <div class="col-md-4">
@@ -670,7 +607,7 @@
             </div>
           </div>
         </div>
-        <div class="gradient">
+        <div>
           <div class="boxes">
             <div
               class="row"
@@ -714,16 +651,14 @@
         </div>
         <br /><br />
       </div>
-      <footer style="height: 0.5vh; border-top: 1px solid #acacac">
-        <div class="row" style="padding: 10px">
-          <div class="col-md-4">
-            <p style="font-size: 90%; color: #acacac">
-              设计&制作 by 吴晓妍 © 2021
-            </p>
-          </div>
-        </div>
-      </footer>
+      
     </div>
+  </div>
+  <footer class="footer">
+        <p style="font-size: 90%; color: #acacac">
+          设计&制作 by 吴晓妍 © 2021
+        </p>
+  </footer>
   </body>
   <script text="text/javascript">
     $(function () {

@@ -19,6 +19,11 @@ var _hmt = _hmt || [];
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
+        .gridlayout{
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
+        }
         .banner{
             display: flex;
             height: 60vh;
@@ -31,14 +36,17 @@ var _hmt = _hmt || [];
             margin: auto;
             
         }
-        .infobox{
-            display: block;
-            position: fixed;
-            width: 100px;
-            left:40px;
-            padding:10px;
-            top:410px
-        }
+        .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: block;
+        position: fixed;
+        bottom: 5%;
+        left: 3%;
+      }
+      .infobox ul {
+        display: block;
+      }
         .nav-pills a{
             font-size: 100%;
             color: #acacac;
@@ -159,12 +167,27 @@ var _hmt = _hmt || [];
         li.active a:hover{            
             color: #4b4b4b;
         }
+        .footer {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh;
+        border-top: 1px solid #acacac;
+      }
     </style>
 </head>
 <body data-spy="scroll" data-target=".infobox"  data-offset="200" style="position: relative;">  
-    <nav class="infobox">
-        <div class="row">
-            
+    <header class="banner">
+        <div class="bannerimg">
+            <!-- <div class="row"> -->
+                <img src="../Resources/boximg/tripbanner.png" class="img-responsive" style="max-width: 950px; ">
+            <!-- </div>                      -->
+        </div>
+    </header>
+    
+    <div class="gridlayout">
+        <nav class="infobox">
             <div id="prelist" style="visibility: hidden;" role="navigation">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#bg">项目背景</a></li>
@@ -181,18 +204,10 @@ var _hmt = _hmt || [];
         <div class="returnbtn">
             <a href="index.html"><img src="../Resources/return-h.png" style="width: 30px;" id="return"/></a>
         </div>
-        </div>
         
     </nav>
-    <header class="banner">
-        <div class="bannerimg">
-            <!-- <div class="row"> -->
-                <img src="../Resources/boximg/tripbanner.png" class="img-responsive" style="max-width: 950px; ">
-            <!-- </div>                      -->
-        </div>
-    </header>
     
-    <div class="container" style="max-width: 1000px;">
+    <div class="container" style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2">
         <div class="content">
             <div class="introduction">
                 <p>
@@ -407,15 +422,23 @@ var _hmt = _hmt || [];
         </div>
         
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3">
         <div class="other">
             <h2 class="title css21d845575b22046" id="other">其他作品</h2>
-            <div class="gradient">
+            <div>
                 <div class="boxes">
                     <div class="row" style="max-width: 1140px; margin: auto;">
                         <div class="col-md-4"><p class="category" style="font-family:'SiYuan-ExtraLig21a456b18e22046';">产品设计</p></div>
                     </div>
                     <div class="row">
+                        <div class="col-md-4 boximg">
+                            <p>智慧停车 @蔚来</p>
+                            <a href="/中文/senseparking.html"
+                              ><img
+                                src="../Resources/boximg/parkingbox.png"
+                                class="col-md-12"
+                            /></a>
+                          </div>
                         <div class="col-md-4 boximg">
                             <p style="font-family:'SiYuan-ExtraLig21a909452a22046';">AR重拾城市黑白影像</p>
                             <a href="ARmap.html"><img src="../Resources/boximg/ARBOX.png" class="col-md-12"></a>
@@ -427,7 +450,7 @@ var _hmt = _hmt || [];
                     </div>
                 </div>
             </div>
-            <div class="gradient">
+            <div>
                 <div class="boxes">
                     <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
                         <div class="col-md-4"><p class="category css21a90d84fc22046">数据可视化<span style="font-size: 60%;color:#acacac;">推荐在电脑上查看</span></p></div>
@@ -456,14 +479,12 @@ var _hmt = _hmt || [];
             </div>
             <br><br>
         </div>
-        <footer style="height: 0.5vh; border-top: 1px solid #acacac;">
-            <div class="row" style="padding: 10px;">
-                <div class="col-md-4">
-                    <p style="font-size: 90%; color: #acacac;">设计&制作 by 吴晓妍 © 2021</p>
-                </div>
-            </div>
-        </footer>
+        
     </div>
+</div>
+<footer class="footer">
+            <p style="font-size: 90%; color: #acacac;">设计&制作 by 吴晓妍 © 2021</p>
+</footer>
 </body>
 <script text="javascript">
     $(function(){

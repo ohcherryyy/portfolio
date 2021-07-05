@@ -26,9 +26,10 @@
       crossorigin="anonymous"
     ></script>
     <style>
-      .gridlayout{
+      .gridlayout {
         display: grid;
-        grid-template-columns: auto 1140px auto;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
       }
       .banner {
         display: flex;
@@ -45,12 +46,15 @@
         margin: auto;
       }
       .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
         display: block;
         position: fixed;
-        width: 100px;
-        left: 40px;
-        padding: 10px;
-        top: 410px;
+        bottom: 5%;
+        left: 3%;
+      }
+      .infobox ul {
+        display: block;
       }
       .nav-pills a {
         font-size: 100%;
@@ -175,6 +179,14 @@
       li.active a:hover {
         color: #4b4b4b;
       }
+      .footer {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh;
+        border-top: 1px solid #acacac;
+      }
     </style>
   </head>
   <body
@@ -183,8 +195,19 @@
     data-offset="200"
     style="position: relative"
   >
-    <nav class="infobox">
-      <div class="row">
+    <header class="banner">
+      <div class="bannerimg">
+        <!-- <div class="row"> -->
+        <img
+          src="../Resources/boximg/parkingbanner.png"
+          class="img-responsive"
+          style="max-width: 950px"
+        />
+        <!-- </div>                      -->
+      </div>
+    </header>
+    <div class="gridlayout">
+      <nav class="infobox">
         <div id="prelist" style="visibility: hidden" role="navigation">
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#bg">产品价值</a></li>
@@ -204,550 +227,537 @@
               id="return"
           /></a>
         </div>
-      </div>
-    </nav>
-    <header class="banner">
-      <div class="bannerimg">
-        <!-- <div class="row"> -->
-        <img
-          src="../Resources/boximg/parkingbanner.png"
-          class="img-responsive"
-          style="max-width: 950px"
-        />
-        <!-- </div>                      -->
-      </div>
-    </header>
-
-    <div class="container" style="max-width: 1000px">
-      <div class="content">
-        <div class="introduction">
-          <p>
-            本项目为<strong style="color: #287dfa"
-              >蔚来数字座舱部门的实习项目</strong
-            >。通过智慧停车进一步为车主打造完整的出行体验链，提升蔚来汽车场景智能化能力。
-            我参与到了项目从0到1的过程，负责产品设计工作，包括梳理产品结构、业务流程、业务场景，输出交互页面。
-          </p>
-        </div>
-        <br /><br />
-        <h2 class="title css21e3db31192218b" id="bg">产品价值</h2>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              1.
-              用户价值：为车主打造更全面的用车体验链，享受智能科技带来的便利性
-              <br />2. 业务价值：丰富蔚来汽车的V2X 智能互联场景 - vehicle to
-              parking service <br />3.
-              生态价值：助力Niopay拓展更多支付场景，与车主建立更多联接，建立蔚来的品牌生态圈
-            </p>
-          </div>
-        </div>
-        <h2 class="title css21d277f1eb22046" id="problem">定义问题</h2>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <img
-              src="../Resources/senseparking/userjourney.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 12ß00px"
-            />
-          </div>
-        </div>
-        <br />
-        <h2 class="title css21e3dbe99b2218b" id="prep">产品结构</h2>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              功能结构图
-            </p>
-          </div>
-          <div class="col-md-12">
-            <img
-              src="../Resources/senseparking/productstructure.png"
-              class="col-md-12"
-              style="max-width: 900px"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              体验链路
-            </p>
-          </div>
-          <div class="col-md-12">
-            <img
-              src="../Resources/senseparking/ideas.png"
-              class="col-md-12"
-              style="max-width: 1000px"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <h2 class="title css21d682d9ea22046" id="workflow">业务逻辑</h2>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <img
-              src="../Resources/senseparking/flow.png"
-              class="col-md-12"
-              style="max-width: 800px"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <h2 class="title css21d80137d822046" id="wireframe">线框图</h2>
-        <br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              入场通知、离场通知、完成支付提示离场通知
+      </nav>
+      <div
+        class="container"
+        style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2"
+      >
+        <div class="content">
+          <div class="introduction">
+            <p>
+              本项目为<strong style="color: #287dfa"
+                >蔚来数字座舱部门的实习项目</strong
+              >。通过智慧停车进一步为车主打造完整的出行体验链，提升蔚来汽车场景智能化能力。
+              我参与到了项目从0到1的过程，负责产品设计工作，包括梳理产品结构、业务流程、业务场景，输出交互页面。
             </p>
           </div>
           <br /><br />
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/firstnote.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 450px"
-            />
+          <h2 class="title css21e3db31192218b" id="bg">产品价值</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1.
+                用户价值：为车主打造更全面的用车体验链，享受智能科技带来的便利性
+                <br />2. 业务价值：丰富蔚来汽车的V2X 智能互联场景 - vehicle to
+                parking service <br />3.
+                生态价值：助力Niopay拓展更多支付场景，与车主建立更多联接，建立蔚来的品牌生态圈
+              </p>
+            </div>
           </div>
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/entrance.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 450px"
-            />
+          <h2 class="title css21d277f1eb22046" id="problem">定义问题</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/userjourney.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 12ß00px"
+              />
+            </div>
           </div>
-          <!-- </div><br><br>
-            <div class="row"> -->
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/aftpaynote.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 450px"
-            />
-          </div>
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/out.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 450px"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              准备离场通知（确认离场意图，提示支付）、即将超时通知、超时重新计费通知
-            </p>
+          <br />
+          <h2 class="title css21e3dbe99b2218b" id="prep">产品结构</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                功能结构图
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/productstructure.png"
+                class="col-md-12"
+                style="max-width: 900px"
+              />
+            </div>
           </div>
           <br /><br />
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/leavingnote.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 400px"
-            />
-          </div>
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/leaving-autopay.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 400px"
-            />
-          </div>
-          <!-- </div><br><br>
-            <div class="row"> -->
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/leaving-autopaysuc.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 400px"
-            />
-          </div>
-          <div class="col-md-3">
-            <img
-              src="../Resources/senseparking/payagain.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 400px"
-            />
-          </div>
-        </div>
-        <br /><br /><br /><br />
-        <div class="row" style="text-align: left">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              目的地搜索界面
-            </p>
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                体验链路
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/ideas.png"
+                class="col-md-12"
+                style="max-width: 1000px"
+              />
+            </div>
           </div>
           <br /><br />
-          <div class="col-md-12" style="text-align: center">
-            <img
-              src="../Resources/senseparking/mapsearch.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 800px; display: inline-block"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <div class="row" style="text-align: left">
-          <div class="col-md-12">
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              计费界面
-            </p>
+          <h2 class="title css21d682d9ea22046" id="workflow">业务逻辑</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/flow.png"
+                class="col-md-12"
+                style="max-width: 800px"
+              />
+            </div>
           </div>
           <br /><br />
-          <div class="col-md-12" style="text-align: center">
-            <img
-              src="../Resources/senseparking/payment.png"
-              class="col-md-12 img-responsive"
-              style="max-width: 800px; display: inline-block"
-            />
-          </div>
-        </div>
-        <br /><br /><br /><br />
-
-        <h2 class="title css21d80137d822046" id="prototype">原型设计</h2>
-        <br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-6">
-            <br /><br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              <br /><br />
-              1<br />
-              导航到达目的地后，询问是否搜索附近停车场，在搜索结果中提供停车场相关数据服务，并展示支持智慧停车服务的停车场，给予车主初步的认识
-            </p>
-          </div>
-          <div class="col-md-6" style="text-align: center">
-            <img
-              src="../Resources/senseparking/mapsearch.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
-          </div>
-        </div>
-        <br /><br />
-        <br /><br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-4" style="text-align: center">
-            <img
-              src="../Resources/senseparking/registration.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
-          </div>
-          <div class="col-md-4" style="text-align: center">
-            <img
-              src="../Resources/senseparking/registration-autopay.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
-          </div>
-          <div class="col-md-4">
+          <h2 class="title css21d80137d822046" id="wireframe">线框图</h2>
+          <br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                入场通知、离场通知、完成支付提示离场通知
+              </p>
+            </div>
             <br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              2<br />
-              首次进入支持电子支付的停车场，提示开通智慧停车服务。通过预注册流程，自动填入车牌号和手机号，快速开通服务<br />
-              在支付页面也可以开通免密支付服务
-            </p>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/firstnote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/entrance.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <!-- </div><br><br>
+            <div class="row"> -->
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/aftpaynote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/out.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
           </div>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-6">
-            <br /><br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              <br /><br />
-              3<br />
-              识别到车主即将离场后，将弹出通知提示支付。<br />若已开通免密支付，可以直接快速扣款
-            </p>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                准备离场通知（确认离场意图，提示支付）、即将超时通知、超时重新计费通知
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leavingnote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leaving-autopay.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <!-- </div><br><br>
+            <div class="row"> -->
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leaving-autopaysuc.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/payagain.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
           </div>
-          <div class="col-md-6" style="text-align: center">
-            <img
-              src="../Resources/senseparking/leaving-auto.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: left">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                目的地搜索界面
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-12" style="text-align: center">
+              <img
+                src="../Resources/senseparking/mapsearch.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 800px; display: inline-block"
+              />
+            </div>
           </div>
-        </div>
-        <br /><br />
-        <br /><br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-4" style="text-align: center">
-            <img
-              src="../Resources/senseparking/leaving.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
+          <br /><br />
+          <div class="row" style="text-align: left">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                计费界面
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-12" style="text-align: center">
+              <img
+                src="../Resources/senseparking/payment.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 800px; display: inline-block"
+              />
+            </div>
           </div>
-          <div class="col-md-4" style="text-align: center">
-            <img
-              src="../Resources/senseparking/autopay.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
-          </div>
-          <div class="col-md-4">
-            <br /><br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              <br /><br />
-              4<br />
-              支持扫码支付和自动免密支付扣款
-            </p>
-          </div>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-6">
-            <br /><br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              <br /><br />
-              5<br />
-              超时前5分钟推送通知提示，超时后将自动重新计费
-            </p>
-          </div>
+          <br /><br /><br /><br />
 
-          <div class="col-md-6" style="text-align: center">
-            <img
-              src="../Resources/senseparking/payagain.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
+          <h2 class="title css21d80137d822046" id="prototype">原型设计</h2>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                1<br />
+                导航到达目的地后，询问是否搜索附近停车场，在搜索结果中提供停车场相关数据服务，并展示支持智慧停车服务的停车场，给予车主初步的认识
+              </p>
+            </div>
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/mapsearch.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
           </div>
-        </div>
-        <br /><br />
-        <br /><br /><br /><br /><br />
-        <div class="row" style="text-align: center">
-          <div class="col-md-6" style="text-align: center">
-            <img
-              src="../Resources/senseparking/info.gif"
-              class="col-md-12 img-responsive"
-              style="display: inline-block; max-width: 400px"
-            />
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/registration.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/registration-autopay.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                2<br />
+                首次进入支持电子支付的停车场，提示开通智慧停车服务。通过预注册流程，自动填入车牌号和手机号，快速开通服务<br />
+                在支付页面也可以开通免密支付服务
+              </p>
+            </div>
           </div>
-          <div class="col-md-6">
-            <br /><br /><br />
-            <p
-              style="
-                font-size: 100%;
-                color: #8b8b8b;
-                letter-spacing: 2px;
-                padding-top: 10px;
-                text-align: left;
-              "
-            >
-              6<br />
-              可在停车服务界面查看历史订单和个人信息。<br />
-              个人信息中可开启/关闭智慧停车服务，添加/删除车牌号，修改支付方式<br />
-              历史订单中可查看开发票情况，开电子发票
-            </p>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                3<br />
+                识别到车主即将离场后，将弹出通知提示支付。<br />若已开通免密支付，可以直接快速扣款
+              </p>
+            </div>
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/leaving-auto.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
           </div>
-        </div>
-        <br /><br />
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/leaving.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/autopay.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                4<br />
+                支持扫码支付和自动免密支付扣款
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                5<br />
+                超时前5分钟推送通知提示，超时后将自动重新计费
+              </p>
+            </div>
 
-        <br /><br /><br /><br /><br /><br />
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/payagain.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/info.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-6">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                6<br />
+                可在停车服务界面查看历史订单和个人信息。<br />
+                个人信息中可开启/关闭智慧停车服务，添加/删除车牌号，修改支付方式<br />
+                历史订单中可查看开发票情况，开电子发票
+              </p>
+            </div>
+          </div>
+          <br /><br />
+
+          <br /><br /><br /><br /><br /><br />
+        </div>
       </div>
-    </div>
-    <div class="container-fluid">
-      <div class="other">
-        <h2 class="title css21d845575b22046" id="other">其他作品</h2>
-        <div class="gradient">
-          <div class="boxes">
-            <div class="row" style="max-width: 1140px; margin: auto">
-              <div class="col-md-4">
-                <p
-                  class="category"
-                  style="font-family: 'SiYuan-ExtraLig21a456b18e22046'"
-                >
-                  产品设计
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 boximg">
-                <p>新人产品推荐页 @携程金融</p>
-                <a href="/中文/tripfin.html"
-                  ><img
-                    src="../Resources/boximg/tripfinbox.png"
-                    class="col-md-12"
-                /></a>
-              </div>
-              <div class="col-md-4 boximg">
-                <p style="font-family: 'SiYuan-ExtraLig21a909452a22046'">
-                  AR重拾城市黑白影像
-                </p>
-                <a href="ARmap.html"
-                  ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
-                /></a>
-              </div>
-              <div class="col-md-4 boximg">
-                <p class="css221a82df5f2218b">大学选课系统</p>
-                <a href="course.html"
-                  ><img
-                    src="../Resources/boximg/courseBOX.png"
-                    class="col-md-12"
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="gradient">
-          <div class="boxes">
-            <div
-              class="row"
-              style="max-width: 1140px; margin: auto; margin-top: 20px"
-            >
-              <div class="col-md-4">
-                <p class="category css21a90d84fc22046">
-                  数据可视化<span style="font-size: 60%; color: #acacac"
-                    >推荐在电脑上查看</span
+      <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3">
+        <div class="other">
+          <h2 class="title css21d845575b22046" id="other">其他作品</h2>
+          <div>
+            <div class="boxes">
+              <div class="row" style="max-width: 1140px; margin: auto">
+                <div class="col-md-4">
+                  <p
+                    class="category"
+                    style="font-family: 'SiYuan-ExtraLig21a456b18e22046'"
                   >
-                </p>
+                    产品设计
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 boximg">
-                <p class="css21aaf3b47822046">网球四大满贯赛事数据可视化</p>
-                <a href="http://www.cheryloh.com:83" target="_blank">
-                  <img
-                    src="../Resources/boximg/sportsbox.png"
-                    class="col-md-12"
-                  />
-                </a>
-              </div>
-              <div class="col-md-4 boximg">
-                <p class="css21aaf443f622046">新冠肺炎疫情趋势图</p>
-                <a
-                  href="http://sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa.cheryloh.com:48"
-                  target="_blank"
-                >
-                  <img
-                    src="../Resources/boximg/epidemicbox.png"
-                    class="col-md-12"
-                  />
-                </a>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>新人产品推荐页 @携程金融</p>
+                  <a href="/中文/tripfin.html"
+                    ><img
+                      src="../Resources/boximg/tripfinbox.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p style="font-family: 'SiYuan-ExtraLig21a909452a22046'">
+                    AR重拾城市黑白影像
+                  </p>
+                  <a href="ARmap.html"
+                    ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
+                  /></a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p class="css221a82df5f2218b">大学选课系统</p>
+                  <a href="course.html"
+                    ><img
+                      src="../Resources/boximg/courseBOX.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12" style="text-align: center">
-            <a href="index.html"><button class="btnstyle">返回首页</button></a>
+          <div>
+            <div class="boxes">
+              <div
+                class="row"
+                style="max-width: 1140px; margin: auto; margin-top: 20px"
+              >
+                <div class="col-md-4">
+                  <p class="category css21a90d84fc22046">
+                    数据可视化<span style="font-size: 60%; color: #acacac"
+                      >推荐在电脑上查看</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p class="css21aaf3b47822046">网球四大满贯赛事数据可视化</p>
+                  <a href="http://www.cheryloh.com:83" target="_blank">
+                    <img
+                      src="../Resources/boximg/sportsbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p class="css21aaf443f622046">新冠肺炎疫情趋势图</p>
+                  <a
+                    href="http://sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa.cheryloh.com:48"
+                    target="_blank"
+                  >
+                    <img
+                      src="../Resources/boximg/epidemicbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <a href="index.html"
+                ><button class="btnstyle">返回首页</button></a
+              >
+            </div>
+          </div>
+          <br /><br />
         </div>
-        <br /><br />
       </div>
-      <footer style="height: 0.5vh; border-top: 1px solid #acacac">
-        <div class="row" style="padding: 10px">
-          <div class="col-md-4">
-            <p style="font-size: 90%; color: #acacac">
-              设计&制作 by 吴晓妍 © 2021
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
+    <footer class="footer">
+      <p style="font-size: 90%; color: #acacac">设计&制作 by 吴晓妍 © 2021</p>
+    </footer>
   </body>
   <script text="javascript">
     $(function () {
