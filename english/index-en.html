@@ -16,24 +16,32 @@
     <script src="../jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    
     <title>Xiaoyan Wu</title>
     <style>
+        .gridlayout{
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto 100vh auto 92vh;
+      }
         .pos{
             height: 100vh;
-            display: flex;
-            max-width:1140px;
-            justify-content: center;
-            align-items: center;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
         }
         .topbanner{
-            text-align: left;
-            align-content: left;
-            margin: auto;
-            /* margin-left: 200px; */
-            /* margin-right: 200px; */
-            width: 600px;
+            text-align: center;
+
+        margin: auto;
+        /* margin-left: 200px; */
+        /* margin-right: 200px; */
+        width: 600px;
         }
         /* .topdefault{
             flex:1;
@@ -50,21 +58,22 @@
         }
         .info{
             color:#8b8b8b;
-            font-size: 140%;
+            font-size: 160%;
             line-height: 1.5;
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
         .shortinfo{
             color:#acacac;
-            font-size: 100%;
+            font-size: 110%;
             line-height: 1.5;
             letter-spacing: 1.5px;
             margin-bottom: 20px;
         }
         .button{ 
             display: flex;
-            justify-content: left;
+            justify-content: center;
+            align-items:center;
         }
         .btnstyle{
             border: 2px solid #888888;
@@ -87,6 +96,10 @@
             color: #4b4b4b;
         }
         .content{
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
             /* height:300vh; */
             display: block;
             padding: 1px;
@@ -131,7 +144,7 @@
             letter-spacing: 2px;
             
             color:#888888;
-            font-size: 150%;
+            font-size: 130%;
         }
         .gradient{
             background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
@@ -170,13 +183,17 @@
             opacity: 1;
         }
         .aboutme{
-            height: 100vh;
-            display: flex;
-            padding: 1px;
-            text-align: center;
+            grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        height: 92vh;
+        display: flex;
+        padding: 1px;
+        text-align: center;
+        align-items: center;
         }
         .myinfo{
-            
             width: 350px;
             margin: auto;
         }
@@ -189,16 +206,18 @@
             text-decoration: none;
         }
         .navbar{
-            position: fixed;
-            /* border-bottom: #acacac solid 1px; */
-            height: 5vh;
-            width: 100%;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            max-width:1140px;
-            margin-top: 20px;
+            grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        position: fixed;
+        /* border-bottom: #acacac solid 1px; */
+        height: 5vh;
+        width: 100%;
+        align-content: center;
+        justify-content: flex-end;
+        display: flex;
+        padding: 50px;
         }
         .switchlan{
             font-size: 100%;
@@ -221,10 +240,19 @@
             background-repeat: no-repeat;
             background-size: auto 160px
         }
+        .footer{
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh; 
+        border-top: 1px solid #acacac;
+      }
     </style>
 </head>
 <body>
     <div class="container-fluid">
+        <div class="gridlayout">
         <div class="navbar">
             <div class="switchlan">
                 <p><a href="../Chinese/index.html" style="text-decoration: none; color: #8b8b8b;">Chinese</a>/En</p>
@@ -233,26 +261,32 @@
         <header class="pos">
             
             <div class="topbanner">
-                <div class="row">
-                    <h1 class="bannertext"><a href="#me" style="text-decoration: none; color: #888888;">Xiaoyan Wu</a></h1>
-                </div>
                 
-                <div class="row">
+                    <h1 class="bannertext"><a href="#me" style="text-decoration: none; color: #888888;">Xiaoyan Wu</a></h1>
+                
+                
+                <!-- <div class="row">
                     <div class="info">
                         <p>Design for simplicity. <br />Design for boundless communications. <br />Design for public good.
                     </div>    
-                </div>  
-                <div class="row">
+                </div>   -->
+                
                     <div class="shortinfo">
-                        <p>She is going to study MSI program (UX track) @ University of Michigan, Ann Arbor<br />previously worked as product manager intern @ <strong>Trip.com Group, NIO</strong></p>
+                        <p>She is going to study MSI program (UX track) @ University of Michigan, Ann Arbor<br />previously worked as product manager intern @ <strong>Trip.com Group, NIO, PingAn Technology</strong></p>
                     </div>
-                </div>
-                <div class="row">
-                    <div style="margin-right: 50px;"><a href="#portfolio"><button class="btnstyle">Work</button></a></div>
-                <!-- </div>
-                <div class="row"> -->
-                    <div><a href="../Resources/Xiaoyan Wu Resume.pdf" target="_blank"><button class="btnstyle">Resume</button></a></div>
-                </div>
+                
+                    <div class="button">
+                        <div style="margin-right: 50px">
+                          <a href="#portfolio"><button class="btnstyle">Work</button></a>
+                        </div>
+                        <!-- </div>
+                            <div class="row"> -->
+                        <div>
+                          <a href="../Resources/Xiaoyan Wu Resume.pdf" target="_blank"
+                            ><button class="btnstyle">Resume</button></a
+                          >
+                        </div>
+                      </div>
             </div>
             <div class="topdefault">
                  
@@ -260,7 +294,7 @@
         </header>
         <div class="content" id="portfolio">
             <h1 class="contenttitle">Work</h1>
-            <div class="gradient">
+            
                 <div class="boxes">
                     <div class="row" style="max-width: 1140px; margin: auto;">
                         <div class="col-md-4"><p class="category" style="font-family:'SiYuan-ExtraLig21a456b18e22046';">Product Design</p></div>
@@ -281,8 +315,8 @@
                         </div> -->
                     </div>
                 </div>
-            </div>
-            <div class="gradient">
+            
+            
                 <div class="boxes">
                     <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
                         <div class="col-md-12"><p class="category css21a90d84fc22046">Data Visualization        <span style="font-size: 60%;color:#acacac;">Recommended to watch on the computer</span></p></div>
@@ -301,7 +335,7 @@
                         </div>                                 
                     </div>
                 </div>
-            </div>
+            
             <!-- <div class="gradient">
                 <div class="boxes">
                     <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
@@ -317,32 +351,32 @@
             </div> -->
         </div>
         <div class="aboutme" id="me">
-            <div class="myinfo" style="max-width: 450px;">
-                <div class="col-md-12">
-                    <div class="imgrounded"></div> 
-                </div>
-                     
-                    <div class="col-md-12" style="color:#8b8b8b; font-size: 180%; font-family:'YouYuan218fdab45622046';"> 
-                        <p>Xiaoyan Wu</p>
-                    </div> 
-               
-                <div class="row" style="overflow: hidden;">
-                    <div class="col-md-6">
-                        <svg t="1593534489209" class="icon col-md-12" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3773" width="50" height="50"><path d="M574.4 824c22.4 8 43.2 9.6 62.4 9.6 30.4 0 54.4-8 68.8-16 35.2-20.8 41.6-49.6 41.6-68.8 0-20.8-9.6-44.8-27.2-75.2-14.4-25.6-59.2-102.4-132.8-59.2 0 0-22.4 12.8-40 25.6-22.4-24-49.6-57.6-73.6-97.6-22.4-40-38.4-80-48-112 19.2-8 41.6-20.8 41.6-20.8 35.2-20.8 41.6-49.6 41.6-68.8 0-20.8-9.6-44.8-27.2-75.2-17.6-30.4-33.6-49.6-52.8-60.8-17.6-11.2-44.8-19.2-80 1.6-6.4 4.8-171.2 102.4 4.8 406.4 68.8 113.6 142.4 185.6 220.8 211.2zM371.2 238.4c6.4-3.2 14.4-8 22.4-8 14.4 0 32 11.2 56 52.8 35.2 62.4 19.2 78.4 0 89.6-11.2 6.4-43.2 22.4-51.2 25.6-4.8 1.6-9.6 4.8-12.8 9.6s-3.2 11.2-1.6 16c11.2 35.2 27.2 86.4 57.6 137.6 28.8 51.2 65.6 91.2 91.2 118.4 3.2 3.2 9.6 6.4 14.4 6.4 6.4 0 11.2-1.6 14.4-6.4 4.8-4.8 35.2-25.6 46.4-32 19.2-11.2 41.6-17.6 78.4 44.8 14.4 24 20.8 43.2 20.8 56 0 9.6-1.6 22.4-20.8 33.6-1.6 1.6-40 22.4-99.2 3.2-67.2-22.4-136-89.6-196.8-195.2-155.2-268.8-19.2-350.4-19.2-352z" fill="#8b8b8b" p-id="3774"></path></svg>
-                        <p style="font-size: 105%;color:#8b8b8b;" class="col-md-12">19121716093</p>
+                <div class="myinfo" style="max-width: 450px;">
+                    <div class="col-md-12">
+                        <div class="imgrounded"></div> 
                     </div>
-                    <div class="col-md-6" style="padding: 1px;">
-                        <svg t="1593534705806" class="icon col-md-12" style="margin-top: 5px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5031" width="40" height="40"><path d="M891.904 145.92H128.512c-55.808 0-101.376 45.568-101.376 101.376v573.952c0 55.808 45.568 101.376 101.376 101.376h763.392c55.808 0 101.376-45.568 101.376-101.376V247.296c0-55.808-45.568-101.376-101.376-101.376z m-10.24 68.096l-352.768 285.184c-1.024 0.512-2.048 1.536-2.56 2.56-8.704 8.704-23.04 8.704-31.744 0l-2.56-2.56-352.768-285.184h742.4z m10.24 640.512H128.512c-18.432 0-32.768-14.848-32.768-32.768V266.752l351.744 284.672c17.408 16.896 39.936 25.088 62.464 25.088 22.528 0 45.056-8.192 62.464-25.088l351.744-284.672v554.496c0.512 18.432-13.824 33.28-32.256 33.28z" p-id="5032" fill="#8b8b8b"></path></svg>
-                        <a class="col-md-12"  href=mailto:914120660@qq.com><p style="font-size: 105%;color:#8b8b8b; margin-top: 3px;">914120660@qq.com</p></a>
-                    </div>   
+                        
+                        <div class="col-md-12" style="color:#8b8b8b; font-size: 180%; font-family:'YouYuan218fdab45622046';"> 
+                            <p>Xiaoyan Wu</p>
+                        </div> 
+                
+                    <div class="row" style="overflow: hidden;">
+                        <div class="col-md-6">
+                            <svg t="1593534489209" class="icon col-md-12" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3773" width="50" height="50"><path d="M574.4 824c22.4 8 43.2 9.6 62.4 9.6 30.4 0 54.4-8 68.8-16 35.2-20.8 41.6-49.6 41.6-68.8 0-20.8-9.6-44.8-27.2-75.2-14.4-25.6-59.2-102.4-132.8-59.2 0 0-22.4 12.8-40 25.6-22.4-24-49.6-57.6-73.6-97.6-22.4-40-38.4-80-48-112 19.2-8 41.6-20.8 41.6-20.8 35.2-20.8 41.6-49.6 41.6-68.8 0-20.8-9.6-44.8-27.2-75.2-17.6-30.4-33.6-49.6-52.8-60.8-17.6-11.2-44.8-19.2-80 1.6-6.4 4.8-171.2 102.4 4.8 406.4 68.8 113.6 142.4 185.6 220.8 211.2zM371.2 238.4c6.4-3.2 14.4-8 22.4-8 14.4 0 32 11.2 56 52.8 35.2 62.4 19.2 78.4 0 89.6-11.2 6.4-43.2 22.4-51.2 25.6-4.8 1.6-9.6 4.8-12.8 9.6s-3.2 11.2-1.6 16c11.2 35.2 27.2 86.4 57.6 137.6 28.8 51.2 65.6 91.2 91.2 118.4 3.2 3.2 9.6 6.4 14.4 6.4 6.4 0 11.2-1.6 14.4-6.4 4.8-4.8 35.2-25.6 46.4-32 19.2-11.2 41.6-17.6 78.4 44.8 14.4 24 20.8 43.2 20.8 56 0 9.6-1.6 22.4-20.8 33.6-1.6 1.6-40 22.4-99.2 3.2-67.2-22.4-136-89.6-196.8-195.2-155.2-268.8-19.2-350.4-19.2-352z" fill="#8b8b8b" p-id="3774"></path></svg>
+                            <p style="font-size: 105%;color:#8b8b8b;" class="col-md-12">19121716093</p>
+                        </div>
+                        <div class="col-md-6" style="padding: 1px;">
+                            <svg t="1593534705806" class="icon col-md-12" style="margin-top: 5px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5031" width="40" height="40"><path d="M891.904 145.92H128.512c-55.808 0-101.376 45.568-101.376 101.376v573.952c0 55.808 45.568 101.376 101.376 101.376h763.392c55.808 0 101.376-45.568 101.376-101.376V247.296c0-55.808-45.568-101.376-101.376-101.376z m-10.24 68.096l-352.768 285.184c-1.024 0.512-2.048 1.536-2.56 2.56-8.704 8.704-23.04 8.704-31.744 0l-2.56-2.56-352.768-285.184h742.4z m10.24 640.512H128.512c-18.432 0-32.768-14.848-32.768-32.768V266.752l351.744 284.672c17.408 16.896 39.936 25.088 62.464 25.088 22.528 0 45.056-8.192 62.464-25.088l351.744-284.672v554.496c0.512 18.432-13.824 33.28-32.256 33.28z" p-id="5032" fill="#8b8b8b"></path></svg>
+                            <a class="col-md-12"  href=mailto:914120660@qq.com><p style="font-size: 105%;color:#8b8b8b; margin-top: 3px;">914120660@qq.com</p></a>
+                        </div>   
+                    </div>
+
                 </div>
+                <!-- <div class="myability">
 
-            </div>
-            <!-- <div class="myability">
-
-            </div> -->
+                </div> -->
         </div>
-        
+    </div>
         <footer style="height: 0.5vh; border-top: 1px solid #acacac;">
             <div class="row" style="padding: 10px;">
                 <div class="col-md-4">

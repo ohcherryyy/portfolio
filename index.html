@@ -9,16 +9,15 @@
   <body>
     <script type="text/javascript">
       window.onload = function(){
-        let lang = getQueryVariable('lang')
         let title = document.getElementById('title')
         let origin = window.location.origin
-        if(lang==='en'){
-          title.innerText = 'loading'
-          window.location.replace(origin+"/english/index-en.html")
-        }else{
+        if(window.location.hostname==='www.cheryloh.com'){
           title.innerText = '跳转中'
-          console.log(window.location)
           window.location.replace(origin+"/Chinese/index.html")
+        }else{
+          title.innerText = 'loading'
+          console.log(window.location)
+          window.location.replace(origin+"/english/index-en.html")
         }
       }
       function getQueryVariable(variable) {
