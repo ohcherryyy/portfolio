@@ -1,272 +1,427 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
     <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?7850ef94e9257c10cf653482144a1072";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7850ef94e9257c10cf653482144a1072";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
     <script src="../jquery-1.11.3.min.js"></script>
     <title>Product Recommendation Page for newcomers | Xiaoyan Wu</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+
     <style>
-        .banner{
-            display: flex;
-            height: 60vh;
-            overflow: hidden;
-            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
-        }
-        .bannerimg{
-            text-align: center;
-            align-content: center;
-            margin: auto;
-            
-        }
-        .infobox{
-            display: block;
-            position: fixed;
-            width: 100px;
-            left:40px;
-            padding:10px;
-            top:410px
-        }
-        .nav-pills a{
-            font-size: 100%;
-            color: #acacac;
-            letter-spacing:1px; 
-            text-align: left; 
-            line-height: 35px;
-            text-decoration:none;
-        }
-        .nav-pills a:hover{
-            font-size: 100%;
-            color: #8b8b8b;
-            letter-spacing:1px; 
-            text-align: left; 
-            line-height: 35px;
-            text-decoration:none;
-        }
-        .content{
-            display: block;
-            text-align: center;
-        }
-        .introduction{
-            font-size: 100%;
-            color: #8b8b8b;
-            letter-spacing:1px;
-            margin-top: 70px;
-            text-align: left;
-        }
-        .title{
-            font-size: 200%;
-            color: #8b8b8b;
-            margin-top: 120px;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-        .title:after{
-            display: block;
-            height: 2px;
-            background-color: #bebebe;
-            content: " ";
-            width: 100px;
-            margin: 0 auto;
-            margin-top: 30px;
-        }
-        .category{
-            letter-spacing: 1px;
-            
-            color:#888888;
-            font-size: 150%;
-        }
-        .gradient{
-            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(216, 216, 216, 0.24));
-            margin: auto;
-            /* text-align: center; */
-        }
-        .boxes{
-            max-width: 1140px;
-            margin: auto;
-        }
-        .boximg{
-            transition: all 0.5s;
-            -webkit-transition: all .5s;/* Safari 和 Chrome */
-            -moz-transition: all 0.5s;/* Firefox*/
-            -ms-transition:all 0.5s; /* Internet Explorer */
-            -o-transition: all 0.5s;/* Opera */
-        }
-        .boximg:hover{
-            transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-            -o-transform: scale(1.1);
-        }
-        .boximg p{
-            position:relative;
-            text-align: center;
-            top: 50px;
-            opacity: 0;
-            transition: 0.5s;
-            font-size: 100%;
-            color: #acacac;
-        }
-        .boximg:hover p{
-            transform: translateY(-35px);
-            opacity: 1;
-        }
-        .circle{
-            width: 5px;
-            height: 5px;
-            border-radius: 5px;
-            background-color: #8b8b8b;
-            display: block;
-            float: none;
-            margin: 6px;
-        }
-        .btnstyle{
-            border: 2px solid #888888;
-            height: 50px;
-            width: 100px;
-            border-radius: 1em;
-            letter-spacing: 2px;
-            font-size: 100%;
-            background-color: transparent;
-            color: #888888;
-        }
-        .btnstyle:hover{
-            border: 2px solid #888888;
-            height: 50px;
-            width: 100px;
-            border-radius: 1em;
-            letter-spacing: 2px;
-            font-size: 100%;
-            background-color: #ddddddb6;
-            color: #4b4b4b;
-        }
-        li.active a{            
-            color: #4b4b4b;
-        }
-        li.active a:hover{            
-            color: #4b4b4b;
-        }
+      .gridlayout {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .banner {
+        display: flex;
+        height: 60vh;
+        overflow: hidden;
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+      }
+      .bannerimg {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+      }
+      .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: block;
+        position: fixed;
+        bottom: 5%;
+        left: 3%;
+      }
+      .infobox ul {
+        display: block;
+      }
+      .nav-pills a {
+        font-size: 100%;
+        color: #acacac;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .nav-pills a:hover {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .content {
+        display: block;
+        text-align: center;
+      }
+      .introduction {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 1px;
+        margin-top: 70px;
+        text-align: left;
+      }
+      .title {
+        font-size: 200%;
+        color: #8b8b8b;
+        margin-top: 120px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+      .title:after {
+        display: block;
+        height: 2px;
+        background-color: #bebebe;
+        content: " ";
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      .category {
+        letter-spacing: 1px;
+
+        color: #888888;
+        font-size: 150%;
+      }
+      .gradient {
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+        margin: auto;
+        /* text-align: center; */
+      }
+      .boxes {
+        max-width: 1140px;
+        margin: auto;
+      }
+      .boximg {
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+        -moz-transition: all 0.5s; /* Firefox*/
+        -ms-transition: all 0.5s; /* Internet Explorer */
+        -o-transition: all 0.5s; /* Opera */
+      }
+      .boximg:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+      }
+      .boximg p {
+        position: relative;
+        text-align: center;
+        top: 50px;
+        opacity: 0;
+        transition: 0.5s;
+        font-size: 100%;
+        color: #acacac;
+      }
+      .boximg:hover p {
+        transform: translateY(-35px);
+        opacity: 1;
+      }
+      .circle {
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #8b8b8b;
+        display: block;
+        float: none;
+        margin: 6px;
+      }
+      .btnstyle {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: transparent;
+        color: #888888;
+      }
+      .btnstyle:hover {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: #ddddddb6;
+        color: #4b4b4b;
+      }
+      li.active a {
+        color: #4b4b4b;
+      }
+      li.active a:hover {
+        color: #4b4b4b;
+      }
+      .footer {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh;
+        border-top: 1px solid #acacac;
+      }
     </style>
-</head>
-<body data-spy="scroll" data-target=".infobox"  data-offset="200" style="position: relative;">  
-    <nav class="infobox">
-        <div class="row">
-            
-            <div id="prelist" style="visibility: hidden;" role="navigation">
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#bg">Background</a></li>
-                    <li><a href="#problem">The Problem</a></li>
-                    <li><a href="#research">Research</a></li>
-                    <li><a href="#prep">Explore</a></li>
-                    <li><a href="#workflow">UX workflow</a></li>
-                    <li><a href="#wireframe">Wireframing</a></li>
-                    <li><a href="#prototype">Prototyping</a></li>
-                    <li><a href="#final">Summary</a></li>
+  </head>
+  <body
+    data-spy="scroll"
+    data-target=".infobox"
+    data-offset="200"
+    style="position: relative"
+  >
+    <header class="banner">
+      <div class="bannerimg">
+        <!-- <div class="row"> -->
+        <img
+          src="../Resources/boximg/tripbanner.png"
+          class="img-responsive"
+          style="max-width: 950px"
+        />
+        <!-- </div>                      -->
+      </div>
+    </header>
+    <div class="gridlayout">
+      <nav class="infobox">
+          <div id="prelist" style="visibility: hidden" role="navigation">
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#bg">Background</a></li>
+              <li><a href="#problem">The Problem</a></li>
+              <li><a href="#research">Research</a></li>
+              <li><a href="#prep">Explore</a></li>
+              <li><a href="#workflow">UX workflow</a></li>
+              <li><a href="#wireframe">Wireframing</a></li>
+              <li><a href="#prototype">Prototyping</a></li>
+              <li><a href="#final">Summary</a></li>
             </ul>
             <p></p>
-        </div>
-        <div class="returnbtn">
-            <a href="index-en.html"><img src="../Resources/return-h.png" style="width: 30px;" id="return"/></a>
-        </div>
-        </div>
-        
-    </nav>
-    <header class="banner">
-        <div class="bannerimg">
-            <!-- <div class="row"> -->
-                <img src="../Resources/boximg/tripbanner.png" class="img-responsive" style="max-width: 950px; ">
-            <!-- </div>                      -->
-        </div>
-    </header>
-    
-    <div class="container" style="max-width: 1000px;">
+          </div>
+          <div class="returnbtn">
+            <a href="index-en.html"
+              ><img
+                src="../Resources/return-h.png"
+                style="width: 30px"
+                id="return"
+            /></a>
+          </div>
+      </nav>
+
+      <div
+        class="container"
+        style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2"
+      >
         <div class="content">
-            <div class="introduction">
-                <p>
-                    This is an internship project in <strong style="color:#287DFA ;">Trip.com Group in Finance BU</strong>. As the product manager, I transformed requirements from the business department into the actual landing project.
-                    The purpose of the project is to gradually converse the current 20000+ DAU into users who buy products through relevant operational activities and page revision.
-                    <br><br>
-                    After the launch of this page, <strong style="color: #287DFA;">the conversion rate from homepage to detail page increased about 22% </strong>in one week.
-                    <br><br>
-                </p>
+          <div class="introduction">
+            <p>
+              This is an internship project in
+              <strong style="color: #287dfa"
+                >Trip.com Group in Finance BU</strong
+              >. As the product manager, I transformed requirements from the
+              business department into the actual landing project. The purpose
+              of the project is to gradually converse the current 20000+ DAU
+              into users who buy products through relevant operational
+              activities and page revision. <br /><br />
+              After the launch of this page,
+              <strong style="color: #287dfa"
+                >the conversion rate from homepage to detail page increased
+                about 22% </strong
+              >in one week. <br /><br />
+            </p>
+          </div>
+          <h2 class="title" id="bg">Background</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                Current Situation
+              </p>
+              <br />
+              <img
+                src="../Resources/tripfin/现状.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 800px"
+              />
             </div>
-            <h2 class="title" id="bg">Background</h2>
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; text-align: left;">Current Situation</p>
-                    <br>
-                    <img src="../Resources/tripfin/现状.png" class="col-md-12 img-responsive" style="max-width: 800px;">
-                </div>
-                <div class="col-md-12" style="padding-top:40px;text-align: left;">
-                    <p style="font-size: 100%;color: #8b8b8b;letter-spacing:1px; text-align: left;">
-                        From the perspective of the overall process, <strong style="color:#287DFA ;">users are mainly lost during the process from the homepage to the details page</strong>, and the conversion rate is the lowest among all steps, only 32%<br>
-                        Although there are a large number of coupon recipients, the final coupon usage rate is only 5%, and <strong style="color:#287DFA ;">about 30% of new users didn't use coupons to buy products</strong>
-                    </p>
-                </div>
+            <div class="col-md-12" style="padding-top: 40px; text-align: left">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                From the perspective of the overall process,
+                <strong style="color: #287dfa"
+                  >users are mainly lost during the process from the homepage to
+                  the details page</strong
+                >, and the conversion rate is the lowest among all steps, only
+                32%<br />
+                Although there are a large number of coupon recipients, the
+                final coupon usage rate is only 5%, and
+                <strong style="color: #287dfa"
+                  >about 30% of new users didn't use coupons to buy
+                  products</strong
+                >
+              </p>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; padding-top: 60px;text-align: left;">Requirements from the business department</p>
-                </div>
-                <div class="col-md-12">
-                    <p style="font-size: 100%;color: #8b8b8b;letter-spacing:1px; padding-top: 10px; text-align: left;">
-                        1. Carry out new operational activity which is<span style="color:#287DFA ;">"double interest hike"</span>, in order to attract more newcomers through "double interest" strategy
-                        <br>2. Attract users to invest in <span style="color: #287DFA;">products that need to be held for a long time</span>
-                        <br>3. Only for new users who have not invested since the event was launched
-                        </p>
-                </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Requirements from the business department
+              </p>
             </div>
-            <h2 class="title" id="problem">The Problem</h2>
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; text-align: left;">Voucher process</p>
-                    <br>
-                    <img src="../Resources/tripfin/couponprocess-en.png" class="col-md-12 img-responsive">
-                    
-                </div>
-            </div><br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; text-align: left;">Homepage for newcomers</p>
-                    <br><br>
-                    <img src="../Resources/tripfin/homepage.png" class="col-md-12 img-responsive" style="max-width: 900px;">
-                </div>
-            </div><br><br>
-            <!-- <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. Carry out new operational activity which is<span
+                  style="color: #287dfa"
+                  >"double interest hike"</span
+                >, in order to attract more newcomers through "double interest"
+                strategy <br />2. Attract users to invest in
+                <span style="color: #287dfa"
+                  >products that need to be held for a long time</span
+                >
+                <br />3. Only for new users who have not invested since the
+                event was launched
+              </p>
+            </div>
+          </div>
+          <h2 class="title" id="problem">The Problem</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                Voucher process
+              </p>
+              <br />
+              <img
+                src="../Resources/tripfin/couponprocess-en.png"
+                class="col-md-12 img-responsive"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                Homepage for newcomers
+              </p>
+              <br /><br />
+              <img
+                src="../Resources/tripfin/homepage.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 900px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <!-- <div class="row">
                 <div class="col-md-12">
                     <ul style="font-size: 130%;color: #8b8b8b;letter-spacing:2px; text-align: left;">痛点
                         <li style="font-size: 100%;"></li>
                     </ul>
                 </div>
             </div> -->
-        
-            <h2 class="title" id="research">Competitive Research</h2>
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <img src="../Resources/tripfin/competitors.png" style="max-width: 900px;">
-                </div>
-                <div class="col-md-12">
-                    <br><br>
-                    <p style="font-size: 100%;color: #8b8b8b; padding-top: 10px; text-align: left; list-style: none;line-height: 30px; letter-spacing: 1px;">I mainly conducted research on several competing products to understand the elements and product display strategies displayed on their product list page and event page for new wealth management customers. Finally, the following characteristics are summarized.</p>
-                        <img src="../Resources/tripfin/competitorfeat-en.png" class="col-md-12" >
-                        <!-- <p>
+
+          <h2 class="title" id="research">Competitive Research</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/tripfin/competitors.png"
+                style="max-width: 900px"
+              />
+            </div>
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  padding-top: 10px;
+                  text-align: left;
+                  list-style: none;
+                  line-height: 30px;
+                  letter-spacing: 1px;
+                "
+              >
+                I mainly conducted research on several competing products to
+                understand the elements and product display strategies displayed
+                on their product list page and event page for new wealth
+                management customers. Finally, the following characteristics are
+                summarized.
+              </p>
+              <img
+                src="../Resources/tripfin/competitorfeat-en.png"
+                class="col-md-12"
+              />
+              <!-- <p>
                         <ul style="font-size: 100%;color: #8b8b8b; padding-top: 10px; text-align: left; list-style: none;line-height: 30px; letter-spacing: 2px;">我主要针对以上几款竞品进行调研，了解他们针对理财新户的产品列表界面和活动界面上展示的元素、产品展示策略等。最终总结出了以下几个特点：
                             <li>1. <span style="color:#287DFA;">新手引导：</span></li>
                             <li>2. <span style="color: #287DFA;">安全性提示：</span>保本保息、银行存款产品、平台资质</li>
@@ -275,237 +430,439 @@ var _hmt = _hmt || [];
                             <li>5. <span style="color: #287DFA;">规则简化展示：</span>在界面上加息利率的下方直接展示关键的规则（加息天数、最高封顶金额等），免去用户被复杂规则困扰</li>
                         </ul>
                     </p> -->
-                </div>
             </div>
-            <br><br><br><br>
-            <h2 class="title" id="prep">Explore</h2>
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; text-align: left;">Solutions</p>
-                    <br>
-                        <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px; text-align: left;">
-                        <strong style="font-size: 110%;color: #287DFA;letter-spacing:1px; text-align: left;">1.Optimize homepage layout</strong>
-                        <br>Distinguish current products and fixed deposit products
-                        <br>Add more useful information: Safety information, interest rate hike rules and buying process etc.
-                        </p><br>
-                        <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px; text-align: left;">
-                        <strong style="font-size: 110%;color: #287DFA;letter-spacing:1px; text-align: left;">2.Cancel the issue of coupons and carry out regular operational activities instead</strong>
-                        <br>Omit coupons, and let the back-end system judge whether it meets the interest rate hike rules, and automatically issue reward
-                        <br>Apply the coupon rate hike to the operational activities, so that users can more flexibly choose the time to purchase the product, and it is also convenient for us to adjust the operation strategy at any time
-                        <br>Establish the seckill strategy to attract users to purchase products
-                        </p><br>
-                        <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px; text-align: left;">
-                        <strong style="font-size: 110%;color: #287DFA;letter-spacing:1px; text-align: left;">3.Transition strategy for users who have received coupons before the event</strong>
-                        <br>Those who haven't used coupons before the event can choose to give up coupons and participate in the new event; they can also purchase the products with coupons at the original interest rate.
-                        </p><br>  
-                </div>
-                
-                <div class="col-md-12">
-                    <br><br>
-                    <p style="font-size: 120%;color: #8b8b8b;letter-spacing:1px; text-align: left;">Difficulties and risks</p>
-                    <br>
-                    <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px; text-align: left;">After the first round of review with engineers, the following difficulties and risks were found:</p>
-                    <br>
-                    <img src="../Resources/tripfin/cautious-en.png" class="col-md-12">
-                </div>
+          </div>
+          <br /><br /><br /><br />
+          <h2 class="title" id="prep">Explore</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                Solutions
+              </p>
+              <br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                <strong
+                  style="
+                    font-size: 110%;
+                    color: #287dfa;
+                    letter-spacing: 1px;
+                    text-align: left;
+                  "
+                  >1.Optimize homepage layout</strong
+                >
+                <br />Distinguish current products and fixed deposit products
+                <br />Add more useful information: Safety information, interest
+                rate hike rules and buying process etc.
+              </p>
+              <br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                <strong
+                  style="
+                    font-size: 110%;
+                    color: #287dfa;
+                    letter-spacing: 1px;
+                    text-align: left;
+                  "
+                  >2.Cancel the issue of coupons and carry out regular
+                  operational activities instead</strong
+                >
+                <br />Omit coupons, and let the back-end system judge whether it
+                meets the interest rate hike rules, and automatically issue
+                reward <br />Apply the coupon rate hike to the operational
+                activities, so that users can more flexibly choose the time to
+                purchase the product, and it is also convenient for us to adjust
+                the operation strategy at any time <br />Establish the seckill
+                strategy to attract users to purchase products
+              </p>
+              <br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                <strong
+                  style="
+                    font-size: 110%;
+                    color: #287dfa;
+                    letter-spacing: 1px;
+                    text-align: left;
+                  "
+                  >3.Transition strategy for users who have received coupons
+                  before the event</strong
+                >
+                <br />Those who haven't used coupons before the event can choose
+                to give up coupons and participate in the new event; they can
+                also purchase the products with coupons at the original interest
+                rate.
+              </p>
+              <br />
             </div>
-            <br><br>
-            <h2 class="title" id="workflow">UX workflow</h2>
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <img src="../Resources/tripfin/workflow-en.png" class="col-md-12" style="max-width: 1000px;">
-                </div>
-            </div>
-            <br><br>
-            <h2 class="title" id="wireframe">Wireframing</h2>
-            <br><br>
-            <div class="row" style="text-align: center;">
-                <div class="col-md-5">
-                    <img src="../Resources/tripfin/mainpage.png" class="col-md-12 img-responsive" style="max-width: 250px;">
-                </div>
-                <div class="col-md-7">
-                    <br><br><br>
-                    <img src="../Resources/tripfin/maininfo-en.png" class="col-md-12 img-responsive" style="max-width: 330px;">
-                </div>
-            </div>
-            <br><br><br><br>
-            <div class="row" style="text-align: left;">
-                <div class="col-md-4">
-                    <img src="../Resources/tripfin/双倍加息售罄.png" class="col-md-12 img-responsive" style="max-width: 280px;">
-                </div>
-                <div class="col-md-4">
-                    <img src="../Resources/tripfin/产品售罄.png" class="col-md-12 img-responsive" style="max-width: 280px;">
-                </div>
-                 <div class="col-md-4">
-                     <br><br><br><br><br><br><br>
-                    <p style="font-size: 100%;color: #8b8b8b; letter-spacing:1px;">The product list is mainly divided into two states<br>1. When the double interest rate hike quota is sold out, click the button to purchase at the original interest rate<br>2. After the product is sold out, it cannot be purchased</p>
-                </div>
-            </div>
-            <br><br><br><br>
-            <div class="row" style="text-align: center;">   
-                <div class="col-md-6">
-                    <img src="../Resources/tripfin/屏蔽策略.png" class="col-md-12 img-responsive" style="max-width: 280px;">
-                </div>          
-                <div class="col-md-6">
-                    <br><br><br><br><br><br><br>
-                    <!-- <svg t="1595435714530" class="icon" viewBox="0 0 1024 1024" style="max-width: 50px;" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4526" width="200" height="100"><path d="M512 899.5c-213.668 0-387.5-173.832-387.5-387.5S298.332 124.5 512 124.5 899.5 298.332 899.5 512 725.668 899.5 512 899.5z" fill="#FFFFFF" p-id="4527"></path><path d="M512 137c-206.776 0-375 168.224-375 375s168.224 375 375 375 375-168.224 375-375-168.224-375-375-375m0-25c220.914 0 400 179.086 400 400S732.914 912 512 912 112 732.914 112 512s179.086-400 400-400z" fill="#707070" p-id="4528"></path><path d="M657.703 576.92a85.081 85.081 0 0 0-6.987-34.934 112.5 112.5 0 0 0-20.378-26.783 144.785 144.785 0 0 0-30.858-18.632 235.7 235.7 0 0 0-39.01-13.392c18.632-12.227 32.023-25.036 40.175-37.846 7.569-12.809 11.645-27.948 11.645-46q0-24.454-10.48-41.921a83.792 83.792 0 0 0-27.948-27.365 137.352 137.352 0 0 0-38.428-13.974c-13.974-2.329-27.948-4.076-41.921-4.076-11.063 0-22.707 1.747-34.935 4.076-12.809 3.493-23.872 6.987-34.352 11.645a112.161 112.161 0 0 0-26.2 16.3c-6.987 5.822-9.9 12.227-9.9 18.049 0 6.4 1.747 12.227 6.4 16.885q6.114 6.987 13.974 6.987c4.658 0 11.063-1.165 18.632-4.658l10.48-5.24c3.493-1.747 6.987-3.493 11.063-5.822 8.151-4.076 16.885-8.151 27.365-12.809a72.374 72.374 0 0 1 28.53-6.4c6.987 0 13.974 1.164 21.543 2.329a63.6 63.6 0 0 1 20.961 6.987A47.5 47.5 0 0 1 561.63 374.3a47.5 47.5 0 0 1 5.822 23.29c0 11.645-2.911 22.125-8.151 30.277a87.655 87.655 0 0 1-20.375 23.293c-8.151 6.4-16.3 11.645-25.036 15.138-9.316 4.076-16.885 6.987-23.29 8.151a73.787 73.787 0 0 1-19.8 2.329h-8.73c-5.822 0-11.063 1.165-16.3 2.329-5.822 1.747-9.316 3.493-11.063 5.24q-5.24 5.24-5.24 13.974c0 6.987 2.911 12.809 9.316 18.049 5.822 5.24 11.645 7.569 18.049 7.569a39.141 39.141 0 0 0 13.974-2.329 121.947 121.947 0 0 0 13.392-4.658 131.023 131.023 0 0 1 13.974-4.658 58.658 58.658 0 0 1 14.556-1.747 44.323 44.323 0 0 1 12.227 1.747 68.1 68.1 0 0 0 11.645 2.911 223.811 223.811 0 0 1 23.29 8.151 134.883 134.883 0 0 1 22.125 12.227 83.352 83.352 0 0 1 16.3 18.632 53.9 53.9 0 0 1 6.4 25.619c0 15.721-3.493 29.112-9.9 40.175a98.842 98.842 0 0 1-26.783 29.112 108.382 108.382 0 0 1-36.1 16.885 132.12 132.12 0 0 1-39.01 5.822c-14.556 0-30.277-2.911-46.579-9.316a62.636 62.636 0 0 1-16.885-7.569c-5.24-2.911-10.48-5.822-15.721-9.316-3.493-1.747-6.4-3.493-8.734-4.658a63.512 63.512 0 0 1-6.4-3.493c-4.658-2.329-8.734-4.076-11.645-4.076-5.822 0-10.48 2.329-14.556 6.4-4.658 4.076-6.4 9.316-6.4 15.721 0 6.987 2.329 13.392 7.569 18.049a46.313 46.313 0 0 0 15.719 12.811 149.475 149.475 0 0 0 25.036 9.9c9.316 3.493 19.214 5.822 29.694 8.151a264.49 264.49 0 0 0 29.694 5.24 132.026 132.026 0 0 0 24.454 2.329 180.016 180.016 0 0 0 57.06-9.316c18.632-5.822 36.1-13.974 51.237-25.619a145.407 145.407 0 0 0 37.263-42.5q13.975-24.458 13.975-57.646z" fill="#707070" p-id="4529"></path></svg> -->
-                    <p style="font-size: 100%;color: #8b8b8b; letter-spacing:1px;">When the blocking strategy of the account is obtained, the products to be blocked are hidden and the products that are not blocked are displayed.</p>
-                </div>
-            </div>
-            <br><br><br><br>
-            <h2 class="title" id="prototype">Prototyping</h2>
-            
-            <br><br><br><br>
-            <div class="row" style="text-align: center;">
-                 <div class="col-md-12">
-                    <img src="../Resources/tripfin/first-en@2x.png" class="col-md-12 img-responsive">
-                </div>                
-            </div>
-            <br><br><br><br>
-            <div class="row" style="text-align: center;">  
-                <div class="col-md-12">
-                    <img src="../Resources/tripfin/second-en@2x.png" class="col-md-12 img-responsive">
-                </div>   
-            </div>           
-            <br><br><br><br>
-            <div class="row" style="text-align: center;"> 
-                <div class="col-md-12">
-                    <img src="../Resources/tripfin/third-en@2x.png" class="col-md-12 img-responsive">
-                </div>
-                            
-            </div>
-            <br><br>
-            
-            <h2 class="title" id="final">Summary</h2>
-            <br><br>
-            <div class="row">
-                <!-- <div class="col-md-3"></div> -->
-                <div class="col-md-6">
-                    <img src="../Resources/tripfin/IMG_5743.JPG" class="col-md-12 img-responsive" style="max-width: 250px;">
-                </div>
-                <div class="col-md-6">   
-                    <img src="../Resources/tripfin/IMG_5745.JPG" class="col-md-12 img-responsive" style="max-width: 250px;">
-                </div>
-                <!-- <div class="col-md-3">
-                </div>  -->
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <br><br>
-                    <p style="font-size: 100%;color: #8b8b8b; letter-spacing:1px; text-align: left; line-height: 30px;">
-                        Eventually, with the joint efforts of UI designer's visual design and development, the event page was officially launched, and part of the interface is shown in the above two pictures. The conversion rate of the new account homepage-detail page in the first week after the launch has increased by 22%.
-                    <br>
-                    This is the first time that I have participated in the entire process of product requirements from proposal to launch. Different from teamwork projects in schools, when designing products in enterprises, in addition to covering all user usage scenarios and processes to complete the closed loop, it is also necessary to consider how to promote demand online as efficiently as possible.
-                    To achieve this, it is necessary to conduct in-depth communication with the engineers after product planning, understand the current back-end architecture and technically achievable content, and then reflect on which parts of the current design may require a large amount of development, which parts have higher priority and which parts can be completed in later iterations. After completing these thoughts, we can finally produce a product demand that can be successfully launched.
-                    </p>        
-                </div>
-                
-            </div>
-            
-           
-            <br><br><br><br><br><br>
-        </div>
-        
-    </div>
-    <div class="container-fluid">
-        <div class="other">
-            <h2 class="title" id="other">Other works</h2>
-            <div class="gradient">
-                <div class="boxes">
-                    <div class="row" style="max-width: 1140px; margin: auto;">
-                        <div class="col-md-4"><p class="category">Product Design</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 boximg">
-                            <p>AR tourism map of historical buildings</p>
-                            <a href="ARmap-en.html"><img src="../Resources/boximg/ARBOX.png" class="col-md-12"></a>
-                        </div>
-                        <div class="col-md-4 boximg">
-                            <p>University Course Selection System</p>
-                            <a href="course-en.html"><img src="../Resources/boximg/courseBOX.png" class="col-md-12"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gradient">
-                <div class="boxes">
-                    <div class="row" style="max-width: 1140px; margin: auto; margin-top: 20px;">
-                        <div class="col-md-12"><p class="category">Data Visualization    <span style="font-size: 60%;color:#acacac;">Recommended to watch on the computer</span></p></div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-md-4 boximg">
-                            <p>Tennis Great Slams data visualization</p>
-                            <a href="http://www.cheryloh.com:81" target="_blank">
-                            <img src="../Resources/boximg/sportsbox.png" class="col-md-12"> </a>
-                        </div>
-                        <div class="col-md-4 boximg">
-                            <p>Chinese Covid-19 trend chart</p>
-                            <a href="http://www.cheryloh.com:82" target="_blank">
-                                <img src="../Resources/boximg/epidemicbox.png" class="col-md-12">
-                            </a> 
-                        </div>                                 
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <a href="index-en.html"><button class="btnstyle">返回首页</button></a>
-                </div>
-            </div>
-            <br><br>
-        </div>
-        <footer style="height: 0.5vh; border-top: 1px solid #acacac;">
-            <div class="row" style="padding: 10px;">
-                <div class="col-md-4">
-                    <p style="font-size: 90%; color: #acacac;">设计&制作 by 吴晓妍 © 2021</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-<script text="javascript">
-    $(function(){
-    $(window).scroll(function(){
-        var bg_height = $("h2#bg").offset().top;
-    var oth_height=$("h2#other").offset().top;
-        var this_scrollTop = $(this).scrollTop();
-        console.log(oth_height)
-        console.log(bg_height)
-        if(this_scrollTop+473.9>bg_height){
-            $("div#prelist").css("visibility","visible");
-            $("div.returnbtn").css("visibility","visible");
-        }
-        else if(this_scrollTop<=156){
-            $("div#prelist").css("visibility","hidden");
-        }
-        if(this_scrollTop+473.9>oth_height){
-            $("div#prelist").css("visibility","hidden");
-            $("div.returnbtn").css("visibility","hidden");
-        }
-        
-    });
-    $("#return").hover(function(){
-            $("#return").attr("src","../Resources/return.png");
-        },function(){
-            $("#return").attr("src","../Resources/return-h.png");
-        });
 
-        $('a[href*=#],area[href*=#]').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var $target = $(this.hash);
-                $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
-                if ($target.length) {
-                    var targetOffset = $target.offset().top;
-                    $('html,body').animate({
-                        scrollTop: targetOffset
-                    }, 400);
-                    return false;
-                }
-            }
-        });
-});
-</script>
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 120%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                Difficulties and risks
+              </p>
+              <br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                "
+              >
+                After the first round of review with engineers, the following
+                difficulties and risks were found:
+              </p>
+              <br />
+              <img
+                src="../Resources/tripfin/cautious-en.png"
+                class="col-md-12"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title" id="workflow">UX workflow</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/tripfin/workflow-en.png"
+                class="col-md-12"
+                style="max-width: 1000px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title" id="wireframe">Wireframing</h2>
+          <br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-5">
+              <img
+                src="../Resources/tripfin/mainpage.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 250px"
+              />
+            </div>
+            <div class="col-md-7">
+              <br /><br /><br />
+              <img
+                src="../Resources/tripfin/maininfo-en.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 330px"
+              />
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: left">
+            <div class="col-md-4">
+              <img
+                src="../Resources/tripfin/双倍加息售罄.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 280px"
+              />
+            </div>
+            <div class="col-md-4">
+              <img
+                src="../Resources/tripfin/产品售罄.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 280px"
+              />
+            </div>
+            <div class="col-md-4">
+              <br /><br /><br /><br /><br /><br /><br />
+              <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px">
+                The product list is mainly divided into two states<br />1. When
+                the double interest rate hike quota is sold out, click the
+                button to purchase at the original interest rate<br />2. After
+                the product is sold out, it cannot be purchased
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <img
+                src="../Resources/tripfin/屏蔽策略.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 280px"
+              />
+            </div>
+            <div class="col-md-6">
+              <br /><br /><br /><br /><br /><br /><br />
+              <!-- <svg t="1595435714530" class="icon" viewBox="0 0 1024 1024" style="max-width: 50px;" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4526" width="200" height="100"><path d="M512 899.5c-213.668 0-387.5-173.832-387.5-387.5S298.332 124.5 512 124.5 899.5 298.332 899.5 512 725.668 899.5 512 899.5z" fill="#FFFFFF" p-id="4527"></path><path d="M512 137c-206.776 0-375 168.224-375 375s168.224 375 375 375 375-168.224 375-375-168.224-375-375-375m0-25c220.914 0 400 179.086 400 400S732.914 912 512 912 112 732.914 112 512s179.086-400 400-400z" fill="#707070" p-id="4528"></path><path d="M657.703 576.92a85.081 85.081 0 0 0-6.987-34.934 112.5 112.5 0 0 0-20.378-26.783 144.785 144.785 0 0 0-30.858-18.632 235.7 235.7 0 0 0-39.01-13.392c18.632-12.227 32.023-25.036 40.175-37.846 7.569-12.809 11.645-27.948 11.645-46q0-24.454-10.48-41.921a83.792 83.792 0 0 0-27.948-27.365 137.352 137.352 0 0 0-38.428-13.974c-13.974-2.329-27.948-4.076-41.921-4.076-11.063 0-22.707 1.747-34.935 4.076-12.809 3.493-23.872 6.987-34.352 11.645a112.161 112.161 0 0 0-26.2 16.3c-6.987 5.822-9.9 12.227-9.9 18.049 0 6.4 1.747 12.227 6.4 16.885q6.114 6.987 13.974 6.987c4.658 0 11.063-1.165 18.632-4.658l10.48-5.24c3.493-1.747 6.987-3.493 11.063-5.822 8.151-4.076 16.885-8.151 27.365-12.809a72.374 72.374 0 0 1 28.53-6.4c6.987 0 13.974 1.164 21.543 2.329a63.6 63.6 0 0 1 20.961 6.987A47.5 47.5 0 0 1 561.63 374.3a47.5 47.5 0 0 1 5.822 23.29c0 11.645-2.911 22.125-8.151 30.277a87.655 87.655 0 0 1-20.375 23.293c-8.151 6.4-16.3 11.645-25.036 15.138-9.316 4.076-16.885 6.987-23.29 8.151a73.787 73.787 0 0 1-19.8 2.329h-8.73c-5.822 0-11.063 1.165-16.3 2.329-5.822 1.747-9.316 3.493-11.063 5.24q-5.24 5.24-5.24 13.974c0 6.987 2.911 12.809 9.316 18.049 5.822 5.24 11.645 7.569 18.049 7.569a39.141 39.141 0 0 0 13.974-2.329 121.947 121.947 0 0 0 13.392-4.658 131.023 131.023 0 0 1 13.974-4.658 58.658 58.658 0 0 1 14.556-1.747 44.323 44.323 0 0 1 12.227 1.747 68.1 68.1 0 0 0 11.645 2.911 223.811 223.811 0 0 1 23.29 8.151 134.883 134.883 0 0 1 22.125 12.227 83.352 83.352 0 0 1 16.3 18.632 53.9 53.9 0 0 1 6.4 25.619c0 15.721-3.493 29.112-9.9 40.175a98.842 98.842 0 0 1-26.783 29.112 108.382 108.382 0 0 1-36.1 16.885 132.12 132.12 0 0 1-39.01 5.822c-14.556 0-30.277-2.911-46.579-9.316a62.636 62.636 0 0 1-16.885-7.569c-5.24-2.911-10.48-5.822-15.721-9.316-3.493-1.747-6.4-3.493-8.734-4.658a63.512 63.512 0 0 1-6.4-3.493c-4.658-2.329-8.734-4.076-11.645-4.076-5.822 0-10.48 2.329-14.556 6.4-4.658 4.076-6.4 9.316-6.4 15.721 0 6.987 2.329 13.392 7.569 18.049a46.313 46.313 0 0 0 15.719 12.811 149.475 149.475 0 0 0 25.036 9.9c9.316 3.493 19.214 5.822 29.694 8.151a264.49 264.49 0 0 0 29.694 5.24 132.026 132.026 0 0 0 24.454 2.329 180.016 180.016 0 0 0 57.06-9.316c18.632-5.822 36.1-13.974 51.237-25.619a145.407 145.407 0 0 0 37.263-42.5q13.975-24.458 13.975-57.646z" fill="#707070" p-id="4529"></path></svg> -->
+              <p style="font-size: 100%; color: #8b8b8b; letter-spacing: 1px">
+                When the blocking strategy of the account is obtained, the
+                products to be blocked are hidden and the products that are not
+                blocked are displayed.
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <h2 class="title" id="prototype">Prototyping</h2>
+
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <img
+                src="../Resources/tripfin/first-en@2x.png"
+                class="col-md-12 img-responsive"
+              />
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <img
+                src="../Resources/tripfin/second-en@2x.png"
+                class="col-md-12 img-responsive"
+              />
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <img
+                src="../Resources/tripfin/third-en@2x.png"
+                class="col-md-12 img-responsive"
+              />
+            </div>
+          </div>
+          <br /><br />
+
+          <h2 class="title" id="final">Summary</h2>
+          <br /><br />
+          <div class="row">
+            <!-- <div class="col-md-3"></div> -->
+            <div class="col-md-6">
+              <img
+                src="../Resources/tripfin/IMG_5743.JPG"
+                class="col-md-12 img-responsive"
+                style="max-width: 250px"
+              />
+            </div>
+            <div class="col-md-6">
+              <img
+                src="../Resources/tripfin/IMG_5745.JPG"
+                class="col-md-12 img-responsive"
+                style="max-width: 250px"
+              />
+            </div>
+            <!-- <div class="col-md-3">
+                </div>  -->
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  text-align: left;
+                  line-height: 30px;
+                "
+              >
+                Eventually, with the joint efforts of UI designer's visual
+                design and development, the event page was officially launched,
+                and part of the interface is shown in the above two pictures.
+                The conversion rate of the new account homepage-detail page in
+                the first week after the launch has increased by 22%.
+                <br />
+                This is the first time that I have participated in the entire
+                process of product requirements from proposal to launch.
+                Different from teamwork projects in schools, when designing
+                products in enterprises, in addition to covering all user usage
+                scenarios and processes to complete the closed loop, it is also
+                necessary to consider how to promote demand online as
+                efficiently as possible. To achieve this, it is necessary to
+                conduct in-depth communication with the engineers after product
+                planning, understand the current back-end architecture and
+                technically achievable content, and then reflect on which parts
+                of the current design may require a large amount of development,
+                which parts have higher priority and which parts can be
+                completed in later iterations. After completing these thoughts,
+                we can finally produce a product demand that can be successfully
+                launched.
+              </p>
+            </div>
+          </div>
+
+          <br /><br /><br /><br /><br /><br />
+        </div>
+      </div>
+      <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3">
+        <div class="other">
+          <h2 class="title" id="other">Other works</h2>
+          <div>
+            <div class="boxes">
+              <div class="row" style="max-width: 1140px; margin: auto">
+                <div class="col-md-4">
+                  <p class="category">Product Design</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                    <p>Sense parking @ NIO</p>
+                    <a href="senseparking-en.html"
+                      ><img
+                        src="../Resources/boximg/parkingbox.png"
+                        class="col-md-12"
+                    /></a>
+                  </div>
+                <div class="col-md-4 boximg">
+                  <p>AR tourism map of historical buildings</p>
+                  <a href="ARmap-en.html"
+                    ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
+                  /></a>
+                </div>
+                <!-- <div class="col-md-4 boximg">
+                  <p>University Course Selection System</p>
+                  <a href="course-en.html"
+                    ><img
+                      src="../Resources/boximg/courseBOX.png"
+                      class="col-md-12"
+                  /></a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="boxes">
+              <div
+                class="row"
+                style="max-width: 1140px; margin: auto; margin-top: 20px"
+              >
+                <div class="col-md-12">
+                  <p class="category">
+                    Data Visualization
+                    <span style="font-size: 60%; color: #acacac"
+                      >Recommended to watch on the computer</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>Tennis Great Slams data visualization</p>
+                  <a href="http://www.cheryloh.com:81" target="_blank">
+                    <img
+                      src="../Resources/boximg/sportsbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p>Covid-19 trend chart in China(01/20/2020-03/08/2020)</p>
+                  <a href="http://www.cheryloh.com:82" target="_blank">
+                    <img
+                      src="../Resources/boximg/epidemicbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <a href="index-en.html"><button class="btnstyle">Back</button></a>
+            </div>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p style="font-size: 90%; color: #acacac">
+        Designed and developed by Xiaoyan Wu © 2021
+      </p>
+    </footer>
+  </body>
+  <script text="javascript">
+    $(function () {
+      $(window).scroll(function () {
+        var bg_height = $("h2#bg").offset().top;
+        var oth_height = $("h2#other").offset().top;
+        var this_scrollTop = $(this).scrollTop();
+        console.log(oth_height);
+        console.log(bg_height);
+        if (this_scrollTop + 473.9 > bg_height) {
+          $("div#prelist").css("visibility", "visible");
+          $("div.returnbtn").css("visibility", "visible");
+        } else if (this_scrollTop <= 156) {
+          $("div#prelist").css("visibility", "hidden");
+        }
+        if (this_scrollTop + 473.9 > oth_height) {
+          $("div#prelist").css("visibility", "hidden");
+          $("div.returnbtn").css("visibility", "hidden");
+        }
+      });
+      $("#return").hover(
+        function () {
+          $("#return").attr("src", "../Resources/return.png");
+        },
+        function () {
+          $("#return").attr("src", "../Resources/return-h.png");
+        }
+      );
+
+      $("a[href*=#],area[href*=#]").click(function () {
+        if (
+          location.pathname.replace(/^\//, "") ==
+            this.pathname.replace(/^\//, "") &&
+          location.hostname == this.hostname
+        ) {
+          var $target = $(this.hash);
+          $target =
+            ($target.length && $target) ||
+            $("[name=" + this.hash.slice(1) + "]");
+          if ($target.length) {
+            var targetOffset = $target.offset().top;
+            $("html,body").animate(
+              {
+                scrollTop: targetOffset,
+              },
+              400
+            );
+            return false;
+          }
+        }
+      });
+    });
+  </script>
+</html>

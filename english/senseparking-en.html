@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7850ef94e9257c10cf653482144a1072";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script src="../jquery-1.11.3.min.js"></script>
+    <title>Sense parking | Xiaoyan Wu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .gridlayout {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .banner {
+        display: flex;
+        height: 60vh;
+        overflow: hidden;
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+      }
+      .bannerimg {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+      }
+      .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: block;
+        position: fixed;
+        bottom: 5%;
+        left: 3%;
+      }
+      .infobox ul {
+        display: block;
+      }
+      .nav-pills a {
+        font-size: 100%;
+        color: #acacac;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .nav-pills a:hover {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .content {
+        display: block;
+        text-align: center;
+      }
+      .introduction {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 2px;
+        margin-top: 70px;
+        text-align: left;
+      }
+      .title {
+        font-size: 200%;
+        color: #8b8b8b;
+        margin-top: 120px;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+      .title:after {
+        display: block;
+        height: 2px;
+        background-color: #bebebe;
+        content: " ";
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      .category {
+        letter-spacing: 1px;
+
+        color: #888888;
+        font-size: 150%;
+      }
+      .gradient {
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+        margin: auto;
+        /* text-align: center; */
+      }
+      .boxes {
+        max-width: 1140px;
+        margin: auto;
+      }
+      .boximg {
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+        -moz-transition: all 0.5s; /* Firefox*/
+        -ms-transition: all 0.5s; /* Internet Explorer */
+        -o-transition: all 0.5s; /* Opera */
+      }
+      .boximg:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+      }
+      .boximg p {
+        position: relative;
+        text-align: center;
+        top: 50px;
+        opacity: 0;
+        transition: 0.5s;
+        font-size: 100%;
+        color: #acacac;
+      }
+      .boximg:hover p {
+        transform: translateY(-35px);
+        opacity: 1;
+      }
+      .circle {
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #8b8b8b;
+        display: block;
+        float: none;
+        margin: 6px;
+      }
+      .btnstyle {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: transparent;
+        color: #888888;
+      }
+      .btnstyle:hover {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: #ddddddb6;
+        color: #4b4b4b;
+      }
+      li.active a {
+        color: #4b4b4b;
+      }
+      li.active a:hover {
+        color: #4b4b4b;
+      }
+      .footer {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh;
+        border-top: 1px solid #acacac;
+      }
+    </style>
+  </head>
+  <body
+    data-spy="scroll"
+    data-target=".infobox"
+    data-offset="200"
+    style="position: relative"
+  >
+    <header class="banner">
+      <div class="bannerimg">
+        <!-- <div class="row"> -->
+        <img
+          src="../Resources/boximg/parkingbanner.png"
+          class="img-responsive"
+          style="max-width: 950px"
+        />
+        <!-- </div>                      -->
+      </div>
+    </header>
+    <div class="gridlayout">
+      <nav class="infobox">
+        <div id="prelist" style="visibility: hidden" role="navigation">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#bg">Value</a></li>
+            <li><a href="#problem">Define</a></li>
+            <li><a href="#prep">Structure</a></li>
+            <li><a href="#workflow">Business process</a></li>
+            <li><a href="#wireframe">wireframe</a></li>
+            <li><a href="#prototype">Prototype</a></li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="returnbtn">
+          <a href="index.html"
+            ><img
+              src="../Resources/return-h.png"
+              style="width: 30px"
+              id="return"
+          /></a>
+        </div>
+      </nav>
+      <div
+        class="container"
+        style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2"
+      >
+        <div class="content">
+          <div class="introduction">
+            <p>
+              This is a project during <strong style="color: #287dfa"
+                >my internship in Digital Cockpit department of NIO</strong
+              >. Through smart parking, we will further create a complete travel experience chain for car owners, and enhance the intelligence capabilities of NIO's automotive scenes.
+              I participated in the process of the project from 0 to 1, responsible for product design, including sorting out product structure, business processes, business scenarios, and outputting interactive pages.
+            </p>
+          </div>
+          <br /><br />
+          <h2 class="title css21e3db31192218b" id="bg">Value</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1.
+                <strong>User value:</strong> Creating a more complete car travelling experience for NIO users, and letting them enjoy the convenience brought by intelligence technology
+                <br />2. <Strong>Business value:</Strong> Enriching smart interconnection scenarios of NIO - vehicle to
+                parking service <br />3.
+                <Strong>Ecological value:</Strong> Help Niopay expand more payment scenarios, establish more connections with car owners, and build a brand ecosystem of NIO
+              </p>
+            </div>
+          </div>
+          <h2 class="title css21d277f1eb22046" id="problem">Define</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/moodboard.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 12ß00px"
+              />
+            </div>
+          </div>
+          <br />
+          <h2 class="title css21e3dbe99b2218b" id="prep">Structure</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+              Function diagram
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/structure.png"
+                class="col-md-12"
+                style="max-width: 900px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                Experience loop
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/userexp.png"
+                class="col-md-12"
+                style="max-width: 1000px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title css21d682d9ea22046" id="workflow">Business process</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/senseparking/process.png"
+                class="col-md-12"
+                style="max-width: 800px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title css21d80137d822046" id="wireframe">Wireframe</h2>
+          <br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                Notifications(including entrances, departures, payment finished)
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/firstnote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/entrance.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <!-- </div><br><br>
+            <div class="row"> -->
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/aftpaynote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/out.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 450px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                Notifications(when payment is ready, timing out, rebilling)
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leavingnote.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leaving-autopay.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <!-- </div><br><br>
+            <div class="row"> -->
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/leaving-autopaysuc.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+            <div class="col-md-3">
+              <img
+                src="../Resources/senseparking/payagain.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 400px"
+              />
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: left">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+              Searching destinations page
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-12" style="text-align: center">
+              <img
+                src="../Resources/senseparking/searchpage.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 800px; display: inline-block"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <div class="row" style="text-align: left">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                Billing page
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-12" style="text-align: center">
+              <img
+                src="../Resources/senseparking/paypage.png"
+                class="col-md-12 img-responsive"
+                style="max-width: 800px; display: inline-block"
+              />
+            </div>
+          </div>
+          <br /><br /><br /><br />
+
+          <h2 class="title css21d80137d822046" id="prototype">Prototype</h2>
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                1<br />
+                After navigating to the destination, ask if searching for near parking lots is needed or not.<br /><br />
+                 Providing certain information of parking lots including support to sense parking.
+              </p>
+            </div>
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/mapsearch.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/registration.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-6">
+              <br /><br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                2<br />
+                The first time when you entered a parking lot supporting digital payment, there will be a hint to subscribe to the service. <br /><br />
+                Through pre-registration, number plates and phone numbers will automatically fill in the blank, leading to a faster process.
+              </p>
+              <br /><br /><br /><br /><br />
+            </div>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/registration-autopay.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-6">
+              <br /><br /><br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                3<br />
+                
+                Password-free payment service can also be opened on the payment page.
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                4<br />
+                After confirmation of departure, there will be a notification of payment.<br /><br />
+                If password-free payment service is already subscribed, there will be a direct deduction withou any action.
+              </p>
+            </div>
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/leaving-auto.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/leaving.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4" style="text-align: center">
+              <img
+                src="../Resources/senseparking/autopay.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-4">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br />
+                5<br />
+                Support both scan-code payment and automatic password-free payment deduction
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6">
+              <br /><br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                <br /><br />
+                6<br />
+                A notification will be pushed 5 minutes before timeout.
+                After that, it will automatically start re-billing.
+              </p>
+            </div>
+
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/payagain.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <br /><br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-6" style="text-align: center">
+              <img
+                src="../Resources/senseparking/info.gif"
+                class="col-md-12 img-responsive"
+                style="display: inline-block; max-width: 400px"
+              />
+            </div>
+            <div class="col-md-6">
+              <br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 2px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                7<br />
+                History orders and personal information can be found in the service page.<br /><br />
+                In this page, you can open or close the service, add/delete your number plates, modify payment channels.<br /><br />
+                Invoicing can be viewed in historical orders, and electronic invoices can be issued.
+              </p>
+            </div>
+          </div>
+          <br /><br />
+
+          <br /><br /><br /><br /><br /><br />
+        </div>
+      </div>
+      <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3">
+        <div class="other">
+          <h2 class="title css21d845575b22046" id="other">Other works</h2>
+          <div>
+            <div class="boxes">
+              <div class="row" style="max-width: 1140px; margin: auto">
+                <div class="col-md-4">
+                  <p
+                    class="category"
+                  >
+                    Product design
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>Product Recommendation Page for newcomers @ Trip.com</p>
+                  <a href="tripfin-en.html"
+                    ><img
+                      src="../Resources/boximg/tripfinbox.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p style="font-family: 'SiYuan-ExtraLig21a909452a22046'">
+                    AR tourism map of historical buildings
+                  </p>
+                  <a href="ARmap-en.html"
+                    ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
+                  /></a>
+                </div>
+                <!-- <div class="col-md-4 boximg">
+                  <p class="css221a82df5f2218b">大学选课系统</p>
+                  <a href="course.html"
+                    ><img
+                      src="../Resources/boximg/courseBOX.png"
+                      class="col-md-12"
+                  /></a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="boxes">
+              <div
+                class="row"
+                style="max-width: 1140px; margin: auto; margin-top: 20px"
+              >
+                <div class="col-md-12">
+                  <p class="category">
+                    Data visualization<span style="font-size: 60%; color: #acacac"
+                      >Recommended to watch on the computer</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p class="css21aaf3b47822046">Tennis Great Slams data visualization</p>
+                  <a href="http://www.cheryloh.com:83" target="_blank">
+                    <img
+                      src="../Resources/boximg/sportsbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p class="css21aaf443f622046">Covid-19 trend chart in China(01/20/2020-03/08/2020)</p>
+                  <a
+                    href="http://sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa.cheryloh.com:48"
+                    target="_blank"
+                  >
+                    <img
+                      src="../Resources/boximg/epidemicbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <a href="index-en.html"
+                ><button class="btnstyle">Back</button></a
+              >
+            </div>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p style="font-size: 90%; color: #acacac">Designed and developed by Xiaoyan Wu © 2021</p>
+    </footer>
+  </body>
+  <script text="javascript">
+    $(function () {
+      $(window).scroll(function () {
+        var bg_height = $("h2#bg").offset().top;
+        var oth_height = $("h2#other").offset().top;
+        var this_scrollTop = $(this).scrollTop();
+        console.log(oth_height);
+        console.log(bg_height);
+        if (this_scrollTop + 473.9 > bg_height) {
+          $("div#prelist").css("visibility", "visible");
+          $("div.returnbtn").css("visibility", "visible");
+        } else if (this_scrollTop <= 156) {
+          $("div#prelist").css("visibility", "hidden");
+        }
+        if (this_scrollTop + 473.9 > oth_height) {
+          $("div#prelist").css("visibility", "hidden");
+          $("div.returnbtn").css("visibility", "hidden");
+        }
+      });
+      $("#return").hover(
+        function () {
+          $("#return").attr("src", "../Resources/return.png");
+        },
+        function () {
+          $("#return").attr("src", "../Resources/return-h.png");
+        }
+      );
+
+      $("a[href*=#],area[href*=#]").click(function () {
+        if (
+          location.pathname.replace(/^\//, "") ==
+            this.pathname.replace(/^\//, "") &&
+          location.hostname == this.hostname
+        ) {
+          var $target = $(this.hash);
+          $target =
+            ($target.length && $target) ||
+            $("[name=" + this.hash.slice(1) + "]");
+          if ($target.length) {
+            var targetOffset = $target.offset().top;
+            $("html,body").animate(
+              {
+                scrollTop: targetOffset,
+              },
+              400
+            );
+            return false;
+          }
+        }
+      });
+    });
+  </script>
+</html>
