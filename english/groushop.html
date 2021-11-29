@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7850ef94e9257c10cf653482144a1072";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script src="../jquery-1.11.3.min.js"></script>
+    <title>Product Recommendation Page for newcomers | Xiaoyan Wu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .gridlayout {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .banner {
+        display: flex;
+        height: 60vh;
+        overflow: hidden;
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+      }
+      .bannerimg {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+      }
+      .infobox {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: block;
+        position: fixed;
+        bottom: 5%;
+        left: 3%;
+      }
+      .infobox ul {
+        display: block;
+      }
+      .nav-pills a {
+        font-size: 100%;
+        color: #acacac;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .nav-pills a:hover {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 35px;
+        text-decoration: none;
+      }
+      .content {
+        display: block;
+        text-align: center;
+      }
+      .introduction {
+        font-size: 100%;
+        color: #8b8b8b;
+        letter-spacing: 1px;
+        margin-top: 70px;
+        text-align: left;
+      }
+      .title {
+        font-size: 200%;
+        color: #8b8b8b;
+        margin-top: 120px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+      .title:after {
+        display: block;
+        height: 2px;
+        background-color: #bebebe;
+        content: " ";
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      .category {
+        letter-spacing: 1px;
+
+        color: #888888;
+        font-size: 150%;
+      }
+      .gradient {
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(216, 216, 216, 0.24)
+        );
+        margin: auto;
+        /* text-align: center; */
+      }
+      .boxes {
+        max-width: 1140px;
+        margin: auto;
+      }
+      .boximg {
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+        -moz-transition: all 0.5s; /* Firefox*/
+        -ms-transition: all 0.5s; /* Internet Explorer */
+        -o-transition: all 0.5s; /* Opera */
+      }
+      .boximg:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+      }
+      .boximg p {
+        position: relative;
+        text-align: center;
+        top: 50px;
+        opacity: 0;
+        transition: 0.5s;
+        font-size: 100%;
+        color: #acacac;
+      }
+      .boximg:hover p {
+        transform: translateY(-35px);
+        opacity: 1;
+      }
+      .circle {
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #8b8b8b;
+        display: block;
+        float: none;
+        margin: 6px;
+      }
+      .btnstyle {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: transparent;
+        color: #888888;
+      }
+      .btnstyle:hover {
+        border: 2px solid #888888;
+        height: 50px;
+        width: 100px;
+        border-radius: 1em;
+        letter-spacing: 2px;
+        font-size: 100%;
+        background-color: #ddddddb6;
+        color: #4b4b4b;
+      }
+      li.active a {
+        color: #4b4b4b;
+      }
+      li.active a:hover {
+        color: #4b4b4b;
+      }
+      .footer {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding: 15px;
+        height: 8vh;
+        border-top: 1px solid #acacac;
+      }
+    </style>
+  </head>
+  <body
+    data-spy="scroll"
+    data-target=".infobox"
+    data-offset="200"
+    style="position: relative"
+  >
+    <header class="banner">
+      <div class="bannerimg">
+        <!-- <div class="row"> -->
+        <img
+          src="../Resources/boximg/groushopbanner.png"
+          class="img-responsive"
+          style="max-width: 950px"
+        />
+        <!-- </div>                      -->
+      </div>
+    </header>
+    <div class="gridlayout">
+      <nav class="infobox">
+        <div id="prelist" style="visibility: hidden" role="navigation">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#problem">Problem Statement</a></li>
+            <li><a href="#sketch">Sketching</a></li>
+            <li><a href="#persona">Persona</a></li>
+            <li><a href="#story">Storymapping</a></li>
+            <li><a href="#qoc">QOC</a></li>
+            <li><a href="#paper">Paper prototype</a></li>
+            <li><a href="#prototype">Prototyping</a></li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="returnbtn">
+          <a href="index-en.html"
+            ><img
+              src="../Resources/return-h.png"
+              style="width: 30px"
+              id="return"
+          /></a>
+        </div>
+      </nav>
+
+      <div
+        class="container"
+        style="max-width: 1000px; grid-column: 2/3; grid-row: 1/2"
+      >
+        <div class="content">
+          <div class="introduction">
+            <p>
+              This is a course project. Groupshop is a platform to find/create
+              group order for online shopping. The platform provides convenience
+              in
+              <strong style="color: #72a6b4"
+                >finding groups buying together to share/avoid delivery
+                fees</strong
+              >, and
+              <strong style="color: #72a6b4"
+                >combines different retail brands</strong
+              >
+              so that users don’t need to create different accounts on each
+              brand. <br /><br />
+              <br /><br />
+            </p>
+          </div>
+          <h2 class="title">Overview</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <iframe
+                style="border: 1px solid rgba(0, 0, 0, 0.1)"
+                width="900"
+                height="600"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FNdYcRloz3mvQVJ6mxlP6aO%2Fgroushop%3Fnode-id%3D0%253A1"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <h2 class="title" id="problem">Problem Statement</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Neighborhood context
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                There are a lot of Chinese students living in Ann Arbor now. As
+                most of the supermarkets are located in the surrounding area of
+                the city, those without a car need to take a bus or uber to the
+                supermarket to buy groceries, which is either time consuming or
+                too expensive in transportation. Some of them will buy a lot of
+                things at one time, but it’s impossible for those who prefer
+                fresh vegetables and fruits or are busy with study. So, those
+                people turn to delivery services provided by different
+                supermarkets to receive everyday orders. As a Result of the
+                convenient delivery service in China, many Chinese students are
+                more used to buying everything online.
+              </p>
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. Chinese students living in Ann Arbor without a car<br />
+                2. Busy with study
+                <br />
+                3. Prefer eating fresh vegetables and fruits<br />
+                4. Be used to delivery service<br />
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Current situation
+              </p>
+            </div>
+            <br /><br />
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                The delivery fee of each supermarket is high or can be avoided
+                by buying certain amounts. So, some of the students may share
+                delivery fees with roommates or friends. But still, it’s hard to
+                find someone to share fees and if there are few people to share,
+                each person needs to buy a large amount of products with a high
+                delivery cost. <br />Also, if their friends don’t live in the
+                same building, they often need to negotiate the shipping
+                address, which may cause conflicts. They also need to calculate
+                the money to split up, and find a suitable way to transfer money
+                because they possibly don’t have the same bank account. And
+                usually all the products in one order will be packed together.
+                It’s difficult to sort out each person’s products.
+              </p>
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. Share delivery fee with roommates or friends, but still each
+                person needs to buy a lot of things with a still high delivery
+                cost.
+                <br />
+                2. Sometimes it's hard to find someone to share the delivery fee
+                <br />
+                3. Buy a lot of things alone<br />
+                4. Cause conflicts in deciding the shipping address, calculate
+                and transfer money.<br />
+                5. With one person checked out, all the products are in one
+                package and other people must sort out what they buyed by taking
+                notes on their orders.
+                <br />
+              </p>
+            </div>
+          </div>
+
+          <h2 class="title" id="sketch">Sketching alternatives</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  padding-top: 10px;
+                  text-align: left;
+                  list-style: none;
+                  line-height: 30px;
+                  letter-spacing: 1px;
+                "
+              >
+                There are several approaches to solve this problem.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/Approaches.png"
+                style="max-width: 500px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  padding-top: 10px;
+                  text-align: left;
+                  list-style: none;
+                  line-height: 30px;
+                  letter-spacing: 1px;
+                "
+              >
+                And their user stories...
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/Flows.png"
+                style="max-width: 900px"
+              />
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/Flows1.png"
+                style="max-width: 900px"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <br /><br />
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  padding-top: 10px;
+                  text-align: left;
+                  list-style: none;
+                  line-height: 30px;
+                  letter-spacing: 1px;
+                "
+              >
+                It turns out that the first approach is the best one with fewer
+                frustrations during the process to reach the goal!
+              </p>
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title" id="persona">Persona</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/cheryl.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/melissa.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <br />
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/may.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <br />
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/julie.png"
+                style="max-width: 700px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title" id="story">Storymapping</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/storymapping.png"
+                class="col-md-12"
+                style="max-width: 1000px"
+              />
+            </div>
+          </div>
+          <br /><br />
+          <h2 class="title" id="qoc">QOC</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Features of App
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. Provide a platform for those people who need to find someone
+                to share delivery fees to shop online. <br />
+                2. Help those who form a group to share delivery fees a tool to
+                communicate and coordinate issues like where to deliver, how to
+                pay for the bill
+                <br />
+                3. Help gather all the supermarket brands available for online
+                delivery so that users don’t need to create accounts on
+                different platforms.
+                <br />
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Approaches
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/approach1.jpeg"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/approach2.jpeg"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/approach3.jpeg"
+                style="max-width: 700px"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Design rationale
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. It is a better way to satisfy both safety and better
+                experiences to force users to verify their email and mobile
+                phone, and create a profile. Although it may be more time
+                consuming than only email and password, the requirement to link
+                to the phone provides a safer environment for all the users
+                because the app can ensure every user’s actions can be tracked.
+                And the profile information can provide more humannesses and
+                better recommendations from apps to ensure overall experiences.
+                However, this can also be improved in later steps, so it can be
+                edited later and allowed to skip, leading to a shorter way to
+                finish the registration process.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-regis.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                2. There are two ways to display group order lists, one with the
+                map, the other without map. As Figure 5 shows, these two options
+                perform almost the same. It depends on what users care about. If
+                users really care about their privacy, the list view without a
+                map can also provide a flexible way to help them find a suitable
+                group order using the filter. If users want to search for
+                nearest group orders faster, they can use the map view to locate
+                a group order.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-list.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                3. Approach 2 has a different user flow as Approach 1. As Figure
+                6 shows, Approach 2 has a better workflow considering users’
+                needs. First, it has flexibility for users to decide if they
+                need a group order to share delivery fees or not according to
+                how much they have already spent. If their amounts have reached
+                the amount to waive delivery fee, they don’t need a group.
+                Secondly, users can choose whatever supermarket brand they want
+                before deciding on the group order. They don’t need to rely on
+                one group members’ preferences, so they have more opportunities
+                to buy what they want. But there are still two trade-offs for
+                this approach. One is after choosing the supermarket brand and
+                want to find a group order, there may not be enough options for
+                users. And the other one is that it may cause more time to wait
+                for group members to finish the shopping.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-flow.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                4. The group order list page is the most important page for this
+                feature. It forms a community and platform to connect with
+                people with the same needs. As Figure 7 shows, this design is
+                the best option to present the group. The avatar of the
+                organizer has some sense of humanness and community. And
+                meanwhile, it is simple and clear, compared to avatars showing
+                all the group members, and provides enough useful information
+                like remaining vacants for group helping users to make some
+                decisions.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-group list.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                5. The login order of Approach 3 is different from the other two
+                approaches. According to Figure 8, putting the login process
+                after users have actions in the app can help users know more
+                about the app, and then make decisions. But it may serve a great
+                disturbance in the overall shopping experience because when
+                users select an item in the list, it means that users have
+                already made some decisions. If the login process appears at
+                this time, users may feel quite annoyed.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-loginflow.png"
+                style="max-width: 700px"
+              />
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                6. In approach 3, users need to get confirmation when joining
+                the group. As Figure 9 shows, confirmation performs well in
+                ensuring safety and provides a chance for the organizer to know
+                the applicant. But it’s not a fast and convenient way, and it
+                cannot be ensured that someone may deliberately reject
+                applicants which will cause bad experiences. Also, the organizer
+                has the power to move members out of the group, the option
+                without confirmation can kind of ensure safety. And convenience
+                is the most concerning element for this feature.
+              </p>
+            </div>
+            <div class="col-md-12">
+              <img
+                src="../Resources/Groushop/qoc-joingroup.png"
+                style="max-width: 700px"
+              />
+            </div>
+          </div>
+
+          <br /><br /><br /><br />
+          <h2 class="title" id="paper">Paper prototype</h2>
+
+          <br /><br /><br /><br />
+          <div class="row" style="text-align: center">
+            <div class="col-md-12">
+              <a
+                href="https://drive.google.com/file/d/1yYCQXL_73V9ZzlU2X_q18SL8vXGBcUBB/view?usp=sharing"
+                target="_blank"
+                ><img
+                  src="../Resources/Groushop/paper.jpg"
+                  style="max-width: 800px"
+              /></a>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 120%;
+                  color: #72a6b4;
+                  letter-spacing: 1px;
+                  padding-top: 60px;
+                  text-align: left;
+                "
+              >
+                Feedback
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p
+                style="
+                  font-size: 100%;
+                  color: #8b8b8b;
+                  letter-spacing: 1px;
+                  padding-top: 10px;
+                  text-align: left;
+                "
+              >
+                1. Make prepayments before joining the group in order to avoid
+                the failure in finishing the group order. <br />
+                2. Display the current amount the group has already reached to
+                better inform users and help them make decisions in joining the
+                group.
+                <br />
+                3. Let the system automatically calculate the current lowest
+                amount needed for the group to avoid delivery cost. If a user
+                didn’t meet that amount, he/she cannot join the group. The group
+                organizer can open/close this setting of whether his/her group
+                needs this limitation.
+                <br />
+              </p>
+            </div>
+          </div>
+          <br /><br /><br /><br />
+
+          <h2 class="title" id="prototype">Prototype</h2>
+          <br /><br />
+          <div class="row">
+            <div class="col-md-12">
+              <iframe
+                style="border: 1px solid rgba(0, 0, 0, 0.1)"
+                width="900"
+                height="600"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FNdYcRloz3mvQVJ6mxlP6aO%2Fgroushop%3Fnode-id%3D1%253A2%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D1%253A2"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <br /><br /><br /><br /><br /><br />
+        </div>
+      </div>
+      <div class="container-fluid" style="grid-row: 2/3; grid-column: 2/3">
+        <div class="other">
+          <h2 class="title" id="other">Other works</h2>
+          <div>
+            <div class="boxes">
+              <div class="row" style="max-width: 1140px; margin: auto">
+                <div class="col-md-4">
+                  <p class="category">Product Design</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>Sense parking @ NIO</p>
+                  <a href="senseparking-en.html"
+                    ><img
+                      src="../Resources/boximg/parkingbox.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p>Product Recommendation Page for newcomers @ Trip.com</p>
+                  <a href="tripfin-en.html"
+                    ><img
+                      src="../Resources/boximg/tripfinbox.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p>AR tourism map of historical buildings</p>
+                  <a href="ARmap-en.html"
+                    ><img src="../Resources/boximg/ARBOX.png" class="col-md-12"
+                  /></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>College course registration system</p>
+                  <a href="course.html"
+                    ><img
+                      src="../Resources/boximg/courseBOX.png"
+                      class="col-md-12"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="boxes">
+              <div
+                class="row"
+                style="max-width: 1140px; margin: auto; margin-top: 20px"
+              >
+                <div class="col-md-12">
+                  <p class="category">
+                    Data Visualization
+                    <span style="font-size: 60%; color: #acacac"
+                      >Recommended to watch on the computer</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 boximg">
+                  <p>Tennis Great Slams data visualization</p>
+                  <a href="http://www.cheryloh.com:81" target="_blank">
+                    <img
+                      src="../Resources/boximg/sportsbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+                <div class="col-md-4 boximg">
+                  <p>Covid-19 trend chart in China(01/20/2020-03/08/2020)</p>
+                  <a href="http://www.cheryloh.com:82" target="_blank">
+                    <img
+                      src="../Resources/boximg/epidemicbox.png"
+                      class="col-md-12"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <a href="index-en.html"><button class="btnstyle">Back</button></a>
+            </div>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p style="font-size: 90%; color: #acacac">
+        Designed and developed by Xiaoyan Wu © 2021
+      </p>
+    </footer>
+  </body>
+  <script text="javascript">
+    $(function () {
+      $(window).scroll(function () {
+        var bg_height = $("h2#problem").offset().top;
+        var oth_height = $("h2#other").offset().top;
+        var this_scrollTop = $(this).scrollTop();
+        console.log(oth_height);
+        console.log(bg_height);
+        if (this_scrollTop + 473.9 > bg_height) {
+          $("div#prelist").css("visibility", "visible");
+          $("div.returnbtn").css("visibility", "visible");
+        } else if (this_scrollTop <= 156) {
+          $("div#prelist").css("visibility", "hidden");
+        }
+        if (this_scrollTop + 473.9 > oth_height) {
+          $("div#prelist").css("visibility", "hidden");
+          $("div.returnbtn").css("visibility", "hidden");
+        }
+      });
+      $("#return").hover(
+        function () {
+          $("#return").attr("src", "../Resources/return.png");
+        },
+        function () {
+          $("#return").attr("src", "../Resources/return-h.png");
+        }
+      );
+
+      $("a[href*=#],area[href*=#]").click(function () {
+        if (
+          location.pathname.replace(/^\//, "") ==
+            this.pathname.replace(/^\//, "") &&
+          location.hostname == this.hostname
+        ) {
+          var $target = $(this.hash);
+          $target =
+            ($target.length && $target) ||
+            $("[name=" + this.hash.slice(1) + "]");
+          if ($target.length) {
+            var targetOffset = $target.offset().top;
+            $("html,body").animate(
+              {
+                scrollTop: targetOffset,
+              },
+              400
+            );
+            return false;
+          }
+        }
+      });
+    });
+  </script>
+</html>
