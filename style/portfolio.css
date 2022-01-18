@@ -1,3 +1,7 @@
+ul{
+  list-style: none;
+  padding: 0;
+}
 .gridlayout {
     display: grid;
     grid-template-columns: 1fr 6fr 1fr;
@@ -18,6 +22,7 @@
     margin: auto;
   }
   .infobox {
+    width: 10%;
     grid-column: 2/3;
     grid-row: 1/2;
     display: block;
